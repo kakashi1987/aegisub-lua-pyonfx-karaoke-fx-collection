@@ -1,0 +1,46 @@
+﻿[Script Info]
+Title: Default Aegisub file
+ScriptType: v4.00+
+WrapStyle: 0
+PlayResX: 640
+PlayResY: 480
+ScaledBorderAndShadow: yes
+Video Aspect Ratio: 0
+Video Zoom: 6
+Video Position: 0
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Default,Arial,20,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,2,2,2,10,10,10,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Comment: 0,0:00:00.00,0:00:00.00,Hangul,,0000,0000,0000,code once,msa = _G.aegisub.ms_from_frame(1) msb = _G.aegisub.ms_from_frame(100) if msa == nil and msb == nil then frame_dur = 33 else frame_dur = (msb-msa)/100 end
+Comment: 0,0:00:00.00,0:00:00.00,Hangul,,0000,0000,0000,code line,ci = { 0 }; cn = _G.unicode.len(orgline.text_stripped:gsub(" ",""))
+Comment: 0,0:00:00.00,0:00:00.00,Hangul,,0000,0000,0000,code syl,fxgroup.blankfx = (syl.inline_fx == "")
+Comment: 0,0:00:00.00,0:00:00.00,Hangul,,0000,0000,0000,code once,temp = {}
+Comment: 0,0:00:00.00,0:00:00.00,Hangul,,0000,0000,0000,code once,function set_temp(ref,val) temp[ref] = val; return val; end
+Comment: 0,0:00:00.00,0:00:00.00,Hangul,,0000,0000,0000,code once,function tags(dur)  tag = "" temp.time = 0 while temp.time < dur do tag = tag..string.format("\\t(%d,%d,\\frx%d\\frx%d)",set_temp("time",temp.time+math.random(33,66)),temp.time+33,math.random(-10,10),math.random(-3,3)) end return tag end
+Comment: 1,0:00:00.00,0:00:00.00,Hangul,,0000,0000,0000,template char fxgroup blankfx,!retime("start2syl",-400+($si-1)*50,0)!{\an2\fad(200,0)\pos($scenter,!$smiddle+23!)\blur2\alpha&H30&\fscx150\fscy150\t(80,180,\fscx80\fscy80)\t(180,225,\fscx120\fscy120)\t(225,295,\fscx95\fscy95)\t(295,340,\fscx110\fscy110)\t(340,400,\fscx100\fscy100)\3c&HB5D6FF&\t(\3c&H0053C3&)}
+Comment: 1,0:00:00.00,0:00:00.00,Hangul,,0000,0000,0000,template char fxgroup blankfx,!retime("syl2end",-$sdur,360-($syln-$si)*50)!{\blur2\an2\pos($scenter,!$smiddle+23!)\org($center,!$middle+100!)!tags(line.duration)!\fad(0,350)\alpha&H30&\t(0,100,\alpha&H00\bord3\blur4\3c&H9AC5FF&\fscy130)\t(100,400,\bord2\blur2\fscy100\3c&H005CCD&)}
+Comment: 0,0:00:00.00,0:00:00.00,Hangul,,0000,0000,0000,template char fx plus notext noblank loop 3,!retime("syl",-80,400)!{\an!set_temp("align",math.random(1,9)) or temp.align!\org($scenter,$smiddle)\move(!$scenter+math.random(-10,10)!,!$smiddle+math.random(7,7)!,!$scenter+math.random(-40,40)!,!$smiddle+math.random(-20,60)!,0,500)\c&H0000FF&\3c&H000057&\bord1.5\be1\fscx55\fscy55\fsp!math.random(8,10)!\frz!math.random(-360,360)!\t(2,\frz!set_temp("angle",math.random(-360,360) or temp.angle)!\fsp!math.random(20,25)!\alpha&HFF&)\p1}m -5 -15 l -5 -5 l -15 -5 l -15 5 l -5 5 l -5 15 l 5 15 l 5 5 l 15 5 l 15 -5 l 5 -5 l 5 -15 l -5 -15-11
+Comment: 1,0:00:00.00,0:00:00.00,Hangul,,0000,0000,0000,template char fx plus,!retime("start2syl",-400+($si-1)*50,0)!{\an2\fad(200,0)\pos($scenter,!$smiddle+23!)\blur2\alpha&H30&\fscx150\fscy150\t(80,180,\fscx80\fscy80)\t(180,225,\fscx120\fscy120)\t(225,295,\fscx95\fscy95)\t(295,340,\fscx110\fscy110)\t(340,400,\fscx100\fscy100)\3c&HB5D6FF&\t(\3c&H0053C3&)}
+Comment: 1,0:00:00.00,0:00:00.00,Hangul,,0000,0000,0000,template char fx plus,!retime("syl2end",-$sdur,360-($syln-$si)*50)!{\blur2\an2\pos($scenter,!$smiddle+23!)\org($center,!$middle+100!)!tags(line.duration)!\fad(0,350)\alpha&H30&\t(0,100,\alpha&H00\bord3\blur4\3c&H9AC5FF&\fscy130)\t(100,400,\bord2\blur2\fscy100\3c!_G.ass_color(_G.HSV_to_RGB(set_temp("Hue",math.random(360)) or temp.Hue,1,1))!)\t(400,$ldur,\3c&H005CCD&)}
+Comment: 0,0:00:00.00,0:00:00.00,Esub,,0000,0000,0000,template syl noblank,!retime("start2syl",-400+($si-1)*50,0)!{\an5\fad(200,0)\pos($scenter,$smiddle)\be1.2222\fscx150\fscy150\t(100,180,\fscx80\fscy80)\t(180,245,\fscx120\fscy120)\t(245,305,\fscx95\fscy95)\t(305,360,\fscx110\fscy110)\t(360,420,\fscx100\fscy100)}
+Comment: 0,0:00:00.00,0:00:00.00,Esub,,0000,0000,0000,template syl noblank,!retime("syl2end",-$sdur,360-($syln-$si)*50)!{\be1.2222\an5\pos($scenter,$smiddle)\fad(0,350)}
+Comment: 0,0:00:00.00,0:00:00.00,Vsub,,0000,0000,0000,code once,msa = _G.aegisub.ms_from_frame(1) msb = _G.aegisub.ms_from_frame(100) if msa == nil and msb == nil then frame_dur = 33 else frame_dur = (msb-msa)/100 end
+Comment: 0,0:00:00.00,0:00:00.00,Vsub,,0000,0000,0000,code line,ci = { 0 }; cn = _G.unicode.len(orgline.text_stripped:gsub(" ",""))
+Comment: 0,0:00:00.00,0:00:00.00,Vsub,,0000,0000,0000,code once,temp = {}
+Comment: 0,0:00:00.00,0:00:00.00,Vsub,,0000,0000,0000,code once,function set_temp(ref,val) temp[ref] = val; return val; end
+Comment: 0,0:00:00.00,0:00:00.00,Vsub,,0000,0000,0000,template syl noblank,!retime("start2syl",-200,0)!{\an5\fad(200,0)\pos($scenter,$smiddle)\blur1.5\fscx!math.random(180 or 220)!\fscy!math.random(180 or 220)!\t(100,180,\fscx!math.random(60,80)!\fscy!math.random(60,80)!)\t(180,245,\fscx!math.random(130,180)!\fscy!math.random(130,180)!)\t(245,305,\fscx!math.random(80,120)!\fscy!math.random(80,120)!)\t(305,360,\fscx!math.random(110,130)!\fscy!math.random(110,130)!)\t(360,420,\fscx100\fscy100)\3c!_G.ass_color(_G.HSV_to_RGB(set_temp("Hue",math.random(360)) or temp.Hue,1,1))!)\t(\3c&H0053C3&)}
+Comment: 0,0:00:00.00,0:00:00.00,Vsub,,0000,0000,0000,template syl noblank,!retime("syl2end",-$sdur,200)!{\blur1.5\an5\pos($scenter,$smiddle)\fad(0,350)}
+Dialogue: 0,0:00:00.71,0:00:04.18,Hangul,,0000,0000,0000,,{\k24}조{\k25}금{\k22}만 {\k20}더 {\k22}가{\k25}까{\k20}이 {\k27}다{\k25}가{\k22}와{\k41}봐{\k74}봐
+Dialogue: 0,0:00:04.22,0:00:07.78,Hangul,,0000,0000,0000,,{\k33}조{\k19}금{\k22}만 {\k21}더 {\k22}내{\k22}맘{\k24}을 {\k20}다 {\k24}가{\k22}져{\k46}봐{\k81}봐
+Dialogue: 0,0:00:14.73,0:00:18.14,Hangul,,0000,0000,0000,,{\k26}다{\k22}다{\k26}다{\k24}다{\k21}다{\k21}다 {\k19}나{\k22}를 {\k21}따{\k23}라{\k41}와{\k75}봐
+Dialogue: 0,0:00:18.26,0:00:21.99,Hangul,,0000,0000,0000,,{\k23}더{\k25}더{\k21}더{\k20}더{\k22}더{\k24}더 {\k20}내{\k20}게 {\k23}미{\k24}쳐{\k44}봐 {\k44}Ba{\k63}by
+Dialogue: 0,0:00:21.99,0:00:24.89,Hangul,,0000,0000,0000,,{\k25}다{\k21}다{\k22}다{\k23}다{\k19}다 {\k24}나{\k23}를 {\k16}가{\k25}져{\k44}봐{\k48}봐
+Dialogue: 0,0:00:25.17,0:00:28.77,Hangul,,0000,0000,0000,,{\k34}니{\k22}가 {\k21}날 {\k20}원{\k23}하{\k24}는{\k27}대{\k22}로 {\k16\-plus}삐{\k22}리{\k43}뽐 {\k27}빼{\k17}리{\k42}뽐
+Dialogue: 0,0:00:28.77,0:00:32.27,Hangul,,0000,0000,0000,,{\k45}아{\k46}아{\k45}아{\k23}아{\k44}아{\k43}아{\k24}아 {\k17\-plus}삐{\k24}리{\k39}뽐
+Dialogue: 0,0:00:32.27,0:00:35.81,Hangul,,0000,0000,0000,,{\k44}에{\k48}에{\k42}에{\k22}에{\k44}에{\k42}에{\k23}에 {\k23\-plus}빼{\k20}리{\k46}뽐
+Dialogue: 0,0:00:35.81,0:00:39.23,Hangul,,0000,0000,0000,,{\k45}아{\k46}아{\k45}아{\k23}아{\k44}아{\k43}아{\k24}아 {\k17\-plus}삐{\k24}리{\k29}뽐
+Dialogue: 0,0:00:39.23,0:00:42.59,Hangul,,0000,0000,0000,,{\k51}에{\k44}에{\k44}에{\k23}에{\k42}에{\k43}에{\k25}에{\k64}에

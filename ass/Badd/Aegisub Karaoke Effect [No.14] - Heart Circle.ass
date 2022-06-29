@@ -1,0 +1,46 @@
+﻿[Script Info]
+Title: Default Aegisub file
+ScriptType: v4.00+
+WrapStyle: 0
+ScaledBorderAndShadow: yes
+Collisions: Normal
+PlayResX: 1280
+PlayResY: 720
+Last Style Storage: Default
+Scroll Position: 0
+Active Line: 1
+Video Zoom Percent: 0.25
+Video File: ?dummy:23.976000:40000:1280:720:47:163:254:
+Video Aspect Ratio: 0
+Video Position: 0
+YCbCr Matrix: None
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Default,Comic Sans MS,55,&H00FFFFFF,&H000000FF,&H00B300FF,&H00923AFF,0,0,0,0,100,100,0,0,1,1,0,5,10,10,155,1
+Style: Outline,Comic Sans MS,55,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,2,0,6,10,10,10,1
+Style: Trans,UVN Mang Tre,55,&H00FFFFFF,&H000000FF,&H00B300FF,&H00923AFF,0,0,0,0,100,100,0,0,1,1,0,2,10,10,205,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Comment: 0,0:00:00.00,0:00:00.00,Default,,0,0,0,,Kara-Eff được viết bởi Badd ( This Kara-Eff was written by Badd ), nếu sử dụng xin ghi lại một dòng credit - Kara-FX by Badd ^^ ( If you use it, please leave a credit FX to me ). Cảm ơn bạn ( Thanks you ^^)
+Comment: 0,0:00:00.00,0:00:00.00,Default,,0,0,0,,1c = shadow's color (4c). Only available on VSFilterMod
+Comment: 0,0:00:00.00,0:00:00.00,Default,,0,0,0,code syl all,function char_counter(ref) ci[ref] = ci[ref] + 1; return "" end
+Comment: 0,0:00:00.00,0:00:00.00,Default,,0,0,0,code line all,ci = {0,0}; cn = _G.unicode.len(orgline.text_stripped:gsub(" ",""))
+Comment: 0,0:00:00.00,0:00:00.00,Default,,0,0,0,code once,re = "620" ; heartcolor = "&HD170FF&"
+Comment: 0,0:00:00.00,0:00:00.00,Default,,0,0,0,template char notext multi loop 3,!retime("syl",(j-1)*20,1000)!{\t(!line.duration-300!,!line.duration!,\fscx100\fscy100)\fad(50,120)\an5\move(!$scenter+math.random(-10,10)!,!$smiddle+math.random(-10,10)!,!$scenter+math.random(-100,100)!,!$smiddle+math.random(-100,100)!)\t(0,100,\fscx100\fscy100)\t(100,300,\fscx50\fscy50\fscx50)\fscy50\1c&HFFFFFF&\3c!heartcolor!\bord0.5\blur4\t(500,600,\fscx100\fscy100)\t(600,700,\fscx50\fscy50)\t(700,750,\fscx0\fscy0)\t(750,900,\fscx50\fscy50)\p1}m 30 23 b 24 23 24 33 30 33 b 36 33 37 23 30 23 m 35 27 l 61 28 l 35 29 m 26 27 l 0 28 l 26 29 m 29 23 l 30 0 l 31 23 m 29 33 l 30 57 l 31 33
+Comment: 0,0:00:00.00,0:00:00.00,Default,kara,0,0,0,template multi notext noblank,!retime("syl",-re,-$dur)!{\fscx50\fscy50\1vc(!line.styleref.color4!,!line.styleref.color4!,&HFFFFFF&,&HFFFFFF&)\bord3\blur3\t(!re!,!re+20!,\frz-90)\3c!heartcolor!\an5\move(!$lleft!,!$middle-math.random(-45,45)!,$center,$middle,0,!re!)\shad0\p1\frx!math.random(-180,180)!\t(0,!re!,\frx0)}m 14 19 b -13 11 6 -3 22 1 b 28 1 49 19 54 19 b 49 19 26 36 20 36 b 6 37 -13 27 14 19
+Comment: 1,0:00:00.00,0:00:00.00,Default,lead-in,0,0,0,template char,!char_counter(1)!!retime("line",-$lright+(ci[1]-1)*40,-$lright+(ci[1]-1)*40)!{\alpha&HFF&\t(0,400,\alpha0)\blur4\c&HFFFFFF&\3c!line.styleref.color1!\t(!ci[1]*20+250!,!ci[1]*20+1500!,\blur0\1vc(!line.styleref.color4!,!line.styleref.color4!,&HFFFFFF&,&HFFFFFF&)\3c!line.styleref.color3!)\fad(200,0)\an5\moves3(!$center!,!$middle+75*((-1)^syl.i)!,!$center!,!$middle-75*((-1)^syl.i)!,$scenter,!$smiddle!,0,500)\t(!line.duration-700!,!line.duration!,\c&HFFFFFF&\3c!line.styleref.color1!\blur4\bord0)}
+Comment: 1,0:00:00.00,0:00:00.00,Default,circle,0,0,0,template noblank multi loop 5,!retime("syl",(j-1)*40,(j-1)*40)!{\fad(0,300)\an5\shad0\blur!(maxj-j-1)*0.5!\bord0\moves4(!$center!,$middle,!$scenter+25!,!$smiddle-25!,!$scenter-5!,!$smiddle-25!,!$center!,$middle)}
+Comment: 0,0:03:15.60,0:03:17.60,Default,,0,0,0,template multi noblank loop 5,!retime("syl",(maxj-5)*50,(maxj-5)*50)!{\frz!360-j*360/maxj!\fscx0\fscy0\t(,\fscy100\fscx100)\an5\pos($center,$middle)\blur4\bord2\c&HFFFFFF&\3c!heartcolor!\fad(0,50)\p1}m 9 76 b 21 66 15 82 9 85 b 3 82 -3 66 9 76
+Comment: 0,0:03:15.60,0:03:17.60,Default,,0,0,0,template multi noblank loop 10,!retime("syl",(maxj-5)*50,(maxj-5)*50)!{\frz!360-j*360/maxj!\fscx0\fscy0\t(,\fscy100\fscx100)\an5\pos($center,$middle)\blur4\bord2\c&HFFFFFF&\3c!heartcolor!\fad(0,50)\p1}m 9 76 b 21 66 15 82 9 85 b 3 82 -3 66 9 76
+Comment: 0,0:03:15.60,0:03:17.60,Default,,0,0,0,template multi noblank loop 15,!retime("syl",(maxj-5)*50,(maxj-5)*50)!{\frz!360-j*360/maxj!\fscx0\fscy0\t(,\fscy100\fscx100)\an5\pos($center,$middle)\blur4\bord2\c&HFFFFFF&\3c!heartcolor!\fad(0,50)\p1}m 9 76 b 21 66 15 82 9 85 b 3 82 -3 66 9 76
+Comment: 0,0:00:00.00,0:00:00.00,Outline,,0,0,0,template noblank,!retime("start2syl",-($syln-$si)*60,0)!{\an5\frx180\fscx150\fscy150\t(0,700,\frx0\fscx100\fscy100)\fad(300,0)\pos(!$center!,!$middle!)}
+Comment: 1,0:00:00.00,0:00:00.00,Outline,circle,0,0,0,template noblank multi loop 5,!retime("syl",(j-1)*40,(j-1)*40+400)!{\fad(0,300)\an5\shad0\blur!(maxj-j-1)*0.5!\bord0\moves4(!$center!,$middle,!$scenter+25!,!$smiddle-25!,!$scenter-5!,!$smiddle-25!,!$center!,$middle)}
+Comment: 0,0:00:00.00,0:00:00.00,Trans,,0,0,0,code syl all,function char_counter(ref) ci[ref] = ci[ref] + 1; return "" end
+Comment: 0,0:00:00.00,0:00:00.00,Trans,,0,0,0,code line all,ci = {0,0}; cn = _G.unicode.len(orgline.text_stripped:gsub(" ",""))
+Comment: 1,0:00:00.00,0:00:00.00,Trans,lead-in,0,0,0,template char,!char_counter(1)!!retime("line",-$lright+(ci[1]-1)*40,-$lright+(ci[1]-1)*40)!{\alpha&HFF&\t(0,400,\alpha0)\blur4\c&HFFFFFF&\3c!line.styleref.color1!\t(!ci[1]*20+250!,!ci[1]*20+1500!,\blur0\1vc(!line.styleref.color4!,!line.styleref.color4!,&HFFFFFF&,&HFFFFFF&)\3c!line.styleref.color3!)\fad(200,0)\an5\moves3(!$center!,!$middle+75*((-1)^syl.i)!,!$center!,!$middle-75*((-1)^syl.i)!,$scenter,!$smiddle!,0,500)\t(!line.duration-700!,!line.duration!,\c&HFFFFFF&\3c!line.styleref.color1!\blur4\bord0)}
+Dialogue: 0,0:00:02.24,0:00:06.60,Default,,0,0,0,,{\k12}{\k14}Gi{\k12}da{\k12}ri{\k136}daga {\k22}ji{\k171}chin {\k8}you {\k46}know?
+Dialogue: 0,0:02:50.52,0:02:53.88,Outline,,0,0,0,,{\k8}{\k35}ji{\k24}chyeo {\k21}mi{\k23}chi{\k222}go
+Dialogue: 0,0:00:02.24,0:00:06.60,Trans,,0,0,0,,Anh đã mệt mỏi vì chờ đợi, em biết không?
+Dialogue: 0,0:00:00.00,0:00:05.00,Default,,0,0,0,,

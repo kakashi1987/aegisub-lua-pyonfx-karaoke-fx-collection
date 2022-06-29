@@ -1,0 +1,25 @@
+﻿[Script Info]
+Title: Default Aegisub file
+ScriptType: v4.00+
+WrapStyle: 0
+PlayResX: 640
+PlayResY: 480
+ScaledBorderAndShadow: yes
+Last Style Storage: Default
+Video File: D:\Aegisub\3 30s.flv
+Video Aspect Ratio: 0
+Video Zoom: 8
+Video Position: 0
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Default-furigana,Kids,18.5,&H00FFFFFF,&H000000FF,&H0080B6FF,&H00000000,0,0,0,0,100,100,0,0,1,1,1,5,10,10,10,1
+Style: Default,Kids,37,&H00FFFFFF,&H000000FF,&H0080B6FF,&H00000000,0,0,0,0,100,100,0,0,1,2,2,5,10,10,10,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Comment: 1,0:00:00.00,0:00:00.00,Default,,0000,0000,0000,template noblank,!retime("syl",0,800)!{\fscx50\fscy50\alpha0\an5\c&HFFFFFF&\bord0\blur0\pos(!$center+math.random(-30,30)!,!$middle+math.random(-20,20)!)\(0,100,\alpha0\3c&HFFFFFF&)\t(100,200,\1a&HFF&)\t(200,300,\alpha0\3c&HFFFFFF&)\t(300,350,\1a&HFF&)\t(350,400,\alpha0\alpha0\3c&HFFFFFF&)\t(400,420,\1a&HFF&)\t(500,580,\alpha0\3c&HFFFFFF&)\t(580,720,\1a&HFF&)\t(750,800,\alpha0\3c&HFFFFFF&)\t(800,920,\1a&HFF&)\p1}m 30 23 b 24 23 24 33 30 33 b 36 33 37 23 30 23 m 35 27 l 60 28 l 35 29 m 26 27 l 0 28 l 26 29 m 29 23 l 30 0 l 31 23 m 29 33 l 30 56 l 31 33
+Comment: 0,0:00:22.38,0:00:24.38,Default,,0000,0000,0000,template,!retime("line",-50,0)!{\\an5\fad(100,0)\fr-300\bord2\blur3\shad0\move(!$scenter-50!,!$smiddle-20!,$scenter,$smiddle,0,500)\t(0,500,\frz0)}
+Comment: 0,0:02:04.44,0:02:07.23,Default,,0000,0000,0000,karaoke,{\k66}sesanggwa {\k26}neo {\k59}duljunge {\k92}taekharamyeon {\k27}hana
+Comment: 0,0:02:07.21,0:02:09.86,Default,,0000,0000,0000,karaoke,{\k25}nae {\k51}jeonbul {\k64}ppaeasado {\k70}neoramyeon {\k25}nan {\k26}joha
+Comment: 0,0:00:00.00,0:00:05.00,Default,,0000,0000,0000,karaoke,

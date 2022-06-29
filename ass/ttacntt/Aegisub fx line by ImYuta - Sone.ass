@@ -1,0 +1,26 @@
+﻿[Script Info]
+Title: Default Aegisub file
+ScriptType: v4.00+
+WrapStyle: 0
+PlayResX: 640
+PlayResY: 480
+ScaledBorderAndShadow: yes
+Video Aspect Ratio: 0
+Video Zoom: 6
+Video Position: 0
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Default,Arial,20,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,2,2,2,10,10,10,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Comment: 0,0:00:00.00,0:00:00.00,Default,,0000,0000,0000,code once,hat = {"m 0 0 b -12 0 -12 -14 0 -14 b 11 -14 11 0 0 0 "}
+Comment: 0,0:00:00.00,0:00:00.00,Default,,0000,0000,0000,code syl all,function char_counter2(ref) ci2[ref] = ci2[ref] + 1; return "" end
+Comment: 0,0:00:00.00,0:00:00.00,Default,,0000,0000,0000,code line all,ci2 = { 0 }; cn = _G.unicode.len(orgline.text_stripped:gsub(" ",""))
+Comment: 0,0:00:00.00,0:00:00.00,Default,,0000,0000,0000,code syl all,function char_counter(ref) ci[ref] = ci[ref] + 1; return "" end
+Comment: 0,0:00:00.00,0:00:00.00,Default,,0000,0000,0000,code line all,ci = { 0}; cn = _G.unicode.len(orgline.text_stripped:gsub(" ",""))
+Comment: 1,0:00:00.00,0:00:00.00,Default,,0000,0000,0000,template char,!char_counter(1)!!retime("preline",-900+(ci[1]-1)*20,0)!{\fad(0,100)\c&HFFFFFF&\bord2\3c&HFFFFFF&\blur4\fscx10\fscy10\move(!$scenter!,!$smiddle!,!$scenter+math.random(-50,50)!,!$smiddle+math.random(-25,70)!)\pos(!$center!,!$middle!)\fad(230,0)\t(0,!line.duration!,\fscy8\fscx8\fad(0,500)\p1)}!hat[1]!
+Comment: 0,0:00:00.00,0:00:01.00,Default,,0000,0000,0000,template,!retime("line",0,-900+(ci[1]-1)*20)!{\an5\pos(!$center!,!$middle!)}
+Comment: 1,0:00:00.00,0:00:00.02,Default,lead-in(text),0000,0000,0000,template char loop 3,!char_counter2(1)!!retime("preline",-900+(ci2[1]-1)*15,0)!{\an5\bord0\blur10\c&HFFFFFF&\3c&HFFFFFF&\pos(!$center!,!$middle!)\fad(230,0)\t(0,400,\blur0\fscx100\fscy100\c&HFFFFFF&)}
+Dialogue: 0,0:00:00.00,0:00:05.00,Default,,0000,0000,0000,,

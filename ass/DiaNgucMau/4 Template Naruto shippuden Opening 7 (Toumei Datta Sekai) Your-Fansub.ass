@@ -1,0 +1,104 @@
+﻿[Script Info]
+Title: Default Aegisub file
+ScriptType: v4.00+
+WrapStyle: 0
+PlayResX: 640
+PlayResY: 480
+ScaledBorderAndShadow: yes
+Last Style Storage: Default
+Audio File: ?video
+Video File: ..\..\..\PROJECT\Naruto shippuden Opening 7 (Toumei Datta Sekai).avi
+Video Aspect Ratio: 0
+Video Zoom: 4
+Video Position: 2117
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Karaoké,SF Foxboro Script,42,&H00353A38,&H00FFFFFF,&H00E0E0E0,&H00FFFFFF,-1,0,0,0,100,100,0.5,0,1,1.3,0,8,10,10,2,1
+Style: Copie de Karaoké1,Lucida Sans Unicode,30,&H00353A38,&H00FFFFFF,&H00E0E0E0,&H00FFFFFF,-1,0,0,0,100,100,0,0,1,1,0,2,10,10,2,1
+Style: Copie de Copie de Karaoké1,Lucida Sans Unicode,30,&HFF353A38,&HFFFFFFFF,&HA0FFFFFF,&H00FFFFFF,0,0,0,0,100,100,0,0,1,3,0,2,10,10,2,1
+Style:  Karaoké Thunder,SF Foxboro Script,42,&H00353A38,&H00FFFFFF,&H00E0E0E0,&H00FFFFFF,-1,0,0,0,100,100,0.5,0,1,1.3,0,8,10,10,2,1
+Style:  Karaoké Pluie,SF Foxboro Script,42,&H00353A38,&H00FFFFFF,&H00E0E0E0,&H00FFFFFF,-1,0,0,0,100,100,0.5,0,1,1.3,0,8,10,10,2,1
+Style:  Karaoké sengan,SF Foxboro Script,42,&H00353A38,&H00FFFFFF,&H00E0E0E0,&H00FFFFFF,-1,0,0,0,100,100,0.5,0,1,1.3,0,8,10,10,2,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Comment: 0,0:00:00.00,0:00:00.00,Karaoké,,0000,0000,0000,code syl all,color = {"90","200"}; factor = 15; function char_counter(ref) ci[ref] = ci[ref] + 1; return "" end; ci = { 0 }; cn = _G.unicode.len(orgline.text_stripped:gsub(" ","")); shape = {"m 34 0 l 33 33 b 24 21 19 26 33 33 l 0 34 l 33 35 b 19 44 24 49 33 35 l 34 68 l 35 35 b 43 49 48 44 35 35 l 68 34 l 35 33 b 48 26 44 21 35 33","m 4 0 l 0 4 l 4 8 l 8 4 "}; delay = 550; size = 40; temp = {}; function set_temp(ref,val) temp[ref] = val; return val; end
+Comment: 1,0:00:00.00,0:00:00.00,Karaoké,,0000,0000,0000,template char,!retime("syl2end",-$sdur,100-($syln-$si)*80)!{\an5\move($scenter,!$smiddle-20!,!$scenter+math.random(-50,50)!,!$middle+math.random(-80,-30)!)\bord0\shad0\fscx50\fscy50\fad(100,100)\fr!math.random(360)!\c!(j == 1) and set_temp("color",_G.ass_color(_G.HSV_to_RGB(math.random(360),0.6,1))) or temp.color!\p1}!shape[math.random(2)]!
+Comment: 1,0:00:00.00,0:00:00.00,Karaoké,,0000,0000,0000,template char,!retime("syl2end",-$sdur,100-($syln-$si)*80)!{\an5\move(!$center+60!,$middle,!$center+math.random(-60,-30)!,!$middle+math.random(-30,30)!)\bord0\shad0\fscx50\fscy50\fad(100,100)\fr!math.random(360)!\c&H00FFFF&\p1}!shape[math.random(2)]!
+Comment: 1,0:00:00.00,0:00:00.00,Karaoké,,0000,0000,0000,template char noblank,!retime("start2syl",-1000+($si-1)*150,-25)!{\an5\frx260\frz130\move($scenter,!$smiddle+30!,$scenter,$smiddle,0,500)\fad(230,0)\t(0,500,\frx0\frz0)}
+Comment: 1,0:00:00.00,0:00:00.00,Karaoké,,0000,0000,0000,template noblank,!retime("syl2end",-$sdur,100-($syln-$si)*80)!{\an5\pos($center,$middle)\bord2\t(0,25,\fscx60\fscy200\t(25,$dur,\fscx100\fscy100)\fad(0,500))}
+Comment: 1,0:00:00.00,0:00:00.00, Karaoké Pluie,,0000,0000,0000,template char noblank,!retime("start2syl",-1000+($si-1)*150,-25)!{\an5\frx260\frz130\move($scenter,!$smiddle+30!,$scenter,$smiddle,0,500)\fad(230,0)\t(0,500,\frx0\frz0)}
+Comment: 1,0:00:00.00,0:00:00.00, Karaoké Pluie,,0000,0000,0000,template noblank,!retime("syl2end",-$sdur,100-($syln-$si)*80)!{\an5\pos($center,$middle)\bord2\t(0,25,\fscx60\fscy200\t(25,$dur,\fscx100\fscy100)\fad(0,500))}
+Comment: 1,0:00:00.00,0:00:00.00, Karaoké sengan,,0000,0000,0000,template char noblank,!retime("start2syl",-1000+($si-1)*150,-25)!{\an5\frx260\frz130\move($scenter,!$smiddle+30!,$scenter,$smiddle,0,500)\fad(230,0)\t(0,500,\frx0\frz0)}
+Comment: 1,0:00:00.00,0:00:00.00, Karaoké sengan,,0000,0000,0000,template noblank,!retime("syl2end",-$sdur,100-($syln-$si)*80)!{\an5\pos($center,$middle)\bord2\t(0,25,\fscx60\fscy200\t(25,$dur,\fscx100\fscy100)\fad(0,500))}
+Comment: 1,0:00:00.00,0:00:00.00, Karaoké Thunder,,0000,0000,0000,template char noblank,!retime("start2syl",-1000+($si-1)*150,-25)!{\an5\frx260\frz130\move($scenter,!$smiddle+30!,$scenter,$smiddle,0,500)\fad(230,0)\t(0,500,\frx0\frz0)}
+Comment: 1,0:00:00.00,0:00:00.00, Karaoké Thunder,,0000,0000,0000,template noblank,!retime("syl2end",-$sdur,100-($syln-$si)*80)!{\an5\pos($center,$middle)\bord2\t(0,25,\fscx60\fscy200\t(25,$dur,\fscx100\fscy100)\fad(0,500))}
+Comment: 1,0:00:00.00,0:00:00.00,Karaoké,,0000,0000,0000,,
+Comment: 0,0:00:00.00,0:00:00.00, Karaoké sengan,-----------------------,0000,0000,0000,-----------------------,-------------------------------------------------------------------------------
+Comment: 0,0:00:00.00,0:00:00.00, Karaoké sengan,Màu chính (Primary),0000,0000,0000,code once all,color1 = "&HF8D993&"
+Comment: 0,0:00:00.00,0:00:00.00, Karaoké sengan,Màu viền (Border),0000,0000,0000,code once all,color3 = "&HFFF1D2&"
+Comment: 0,0:00:00.00,0:00:00.00, Karaoké sengan,,0000,0000,0000,code once all,circle={0,36,72,108,144,180,216,252,288,324}
+Comment: 0,0:00:00.00,0:00:00.00, Karaoké sengan,,0000,0000,0000,code once all,speed=60
+Comment: 0,0:00:00.00,0:00:00.00, Karaoké sengan,,0000,0000,0000,template noblank char,!retime("start2syl",-800,0)!{\pos($scenter,$sbottom)\an2\fscy0\alpha&ff&\bord0\blur10\t(!$scenter-$sleft!,!$sleft/2!,\fscy150\fscx150\alpha&0&\blur0)\t(!$sleft/2!,$scenter,\fscy100\fscx100\blur2\bord1\alpha&0&\1c!color3!\3c!color1!)}
+Comment: 0,0:00:00.00,0:00:00.00, Karaoké sengan,,0000,0000,0000,template noblank notext loop 10,!retime("syl",-20,320)!{\pos($scenter,$smiddle)\3c!color3!\1c&ffffff&\fsc35\an5\fsvp!$swidth/1.8!\frz!circle[j]!\t(\frz!line.duration/100*speed+circle[j]!\t(\fsc10\fsvp0)\fad(50,100)\p1\bord2\blur6}m 18 39 b 23 28 35 24 35 16 b 36 8 23 0 18 11 b 14 0 0 8 1 16 b 1 24 13 28 18 39
+Comment: 0,0:00:00.00,0:00:00.00, Karaoké sengan,,0000,0000,0000,template noblank loop 7,!retime("syl",j*20,j*40)!{\alpha&HAF\org($scenter,$smiddle)\pos($scenter,$smiddle)\an5\3c!color3!\1c!color1!\bord3\fscx!math.random(100,150)!\fscy!math.random(100,150)!\blur8\be5\t(0,!line.duration!,0.4,\frz!math.random(-700,700)!\fry!math.random(-500,500)!\frx!math.random(-500,500)!)\t(\fscx50\fscy50)\fad(0,100)}
+Comment: 0,0:00:00.00,0:00:00.00, Karaoké sengan,,0000,0000,0000,template noblank loop 5,!retime("syl",j*20,j*50)!{\alpha&HAF\org($scenter,$smiddle)\pos($scenter,$smiddle)\an5\alpha&HAF\3c!color3!\1c!color1!\bord2\fscx!math.random(120,160)!\fscy!math.random(120,160)!\blur6\be4\t(0,!line.duration!,0.2,\frz!math.random(-1000,1000)!\fry!math.random(-550,550)!\frx!math.random(-650,650)!)\t(\fscx50\fscy50)\fad(0,100)}
+Comment: 0,0:00:00.00,0:00:00.00, Karaoké sengan,,0000,0000,0000,template noblank loop 3,!retime("syl",j*20,j*50)!{\alpha&HAF\org($scenter,$smiddle)\pos($scenter,$smiddle)\an5\alpha&HAF\3c!color3!\1c!color1!\bord2\fscx!math.random(100,150)!\fscy!math.random(70,120)!\blur7\be8\t(0,!line.duration-50!,0.2,\frz!math.random(-1200,1200)!\fry!math.random(-450,450)!\frx!math.random(-550,550)!)\t(\fscx25\fscy25)\fad(0,100)}
+Comment: 0,0:00:00.00,0:00:00.00, Karaoké sengan,-----------------------,0000,0000,0000,-----------------------,-------------------------------------------------------------------------------
+Comment: 0,0:00:00.00,0:00:00.00, Karaoké Thunder,Credit,0000,0000,0000,Credit,Written by Địa Ngục Máu @AFS - Vui lòng ghi rõ nguồn Karaoke Effect : Địa Ngục Máu @AFS khi sử dụng ___ Click vào nút Resample Resolution và bấm nút From video để chỉnh độ phân giải của Sub và Video khớp với nhau . Tránh trường hợp khi Apply Effect bị tách chữ + méo shape ^^
+Comment: 2,0:00:00.00,0:00:00.00, Karaoké Thunder,,0000,0000,0000,template char noblank notext loop 10,!retime("syl",0+(j-1)*170,0)!{\an5\bord1\blur3\3c&HFFCF00&\c&HFFFFFF&\frz!math.random(-200,200)!\fry!math.random(-200,200)!\fscx35\fscy35\pos($scenter,$middle)\t(100,110,\alpha&HFF&\p1}m 12 -2 l 18 9 l 37 12 l 35 6 l 58 -15 l 59 -13 l 60 1 l 70 9 l 77 9 l 51 33 l 41 55 b 28 62 43 91 49 108 l 29 139 l 45 147 l 53 168 l 39 218 l 52 169 l 43 151 l 43 148 l 27 139 l 27 134 b 32 135 41 117 48 108 b 44 91 25 67 39 52 l 53 27 l 75 10 l 68 11 l 66 10 l 66 7 l 59 1 l 58 -14 l 36 6 l 39 14 l 17 10 l 15 9 l 12 -1 l 0 0 "
+Comment: 2,0:00:00.00,0:00:00.00, Karaoké Thunder,,0000,0000,0000,template noblank notext loop 10,!retime("syl",50+(j-1)*50,0)!{\an5\bord1\blur3\3c&HFFCF00&\c&HFFFFFF&\frz!math.random(-200,200)!\fry!math.random(-200,200)!\fscx65\fscy65\pos($scenter,$middle)\t(100,110,\alpha&HFF&\p1}m -2 -30 l -7 -22 l -5 -15 b -11 -9 -8 -5 -8 0 b -9 -12 -6 -13 -4 -15 l -6 -22 l -2 -30 m -8 1 l -3 0 l 0 5 l 12 2 l 21 -14 l 26 -7 l 54 18 l 53 13 l 66 15 l 39 -34 l 43 -47 l 38 -53 l 45 -46 l 40 -34 l 68 17 l 66 18 l 65 16 l 54 14 l 55 20 l 51 20 b 45 8 34 1 25 -6 b 24 -8 23 -11 21 -13 b 17 -7 15 -1 14 5 b 9 4 4 5 -1 6 b -2 4 -2 3 -3 1 b -5 1 -6 1 -8 1 "
+Comment: 2,0:00:00.00,0:00:00.00, Karaoké Thunder,,0000,0000,0000,template char noblank notext loop 10,!retime("syl",100+(j-1)*100,0)!{\an5\bord1\blur3\3c&HFFCF00&\c&HFFFFFF&\frz!math.random(-200,200)!\fry!math.random(-200,200)!\fscx60\fscy60\pos($scenter,$middle)\t(100,110,\alpha&HFF&\p1}m 2 -38 l 10 -32 l 29 -44 l 51 -41 l 41 -24 l 30 -24 l 47 -14 l 53 5 b 61 -4 74 -12 89 -14 l 84 -15 l 66 -8 l 54 3 b 51 -4 49 -10 49 -17 b 42 -18 36 -21 31 -24 l 42 -23 b 45 -30 48 -36 53 -42 l 28 -44 b 24 -43 16 -37 11 -33 l 5 -37 l 3 -41 l -5 -35 l 2 -38 "
+Comment: 2,0:00:00.00,0:00:00.00, Karaoké Thunder,,0000,0000,0000,template noblank notext loop 10,!retime("syl",$dur-50+(j-1)*50,$dur+0)!{\an5\bord1\blur3\3c&HFFCF00&\c&HFFFFFF&\frz!math.random(-200,200)!\fry!math.random(-200,200)!\fscx40\fscy40\pos($scenter,$middle)\t(100,110,\alpha&HFF&\p1}m -2 -30 l -7 -22 l -5 -15 b -11 -9 -8 -5 -8 0 b -9 -12 -6 -13 -4 -15 l -6 -22 l -2 -30 m -8 1 l -3 0 l 0 5 l 12 2 l 21 -14 l 26 -7 l 54 18 l 53 13 l 66 15 l 39 -34 l 43 -47 l 38 -53 l 45 -46 l 40 -34 l 68 17 l 66 18 l 65 16 l 54 14 l 55 20 l 51 20 b 45 8 34 1 25 -6 b 24 -8 23 -11 21 -13 b 17 -7 15 -1 14 5 b 9 4 4 5 -1 6 b -2 4 -2 3 -3 1 b -5 1 -6 1 -8 1 "
+Comment: 2,0:00:00.00,0:00:00.00, Karaoké Thunder,,0000,0000,0000,template char noblank notext loop 10,!retime("syl",$dur-100+(j-1)*100,$dur+0)!{\an5\bord1\blur3\3c&HFFCF00&\c&HFFFFFF&\frz!math.random(-200,200)!\fry!math.random(-200,200)!\fscx50\fscy50\pos($scenter,$middle)\t(100,110,\alpha&HFF&\p1}m 2 -38 l 10 -32 l 29 -44 l 51 -41 l 41 -24 l 30 -24 l 47 -14 l 53 5 b 61 -4 74 -12 89 -14 l 84 -15 l 66 -8 l 54 3 b 51 -4 49 -10 49 -17 b 42 -18 36 -21 31 -24 l 42 -23 b 45 -30 48 -36 53 -42 l 28 -44 b 24 -43 16 -37 11 -33 l 5 -37 l 3 -41 l -5 -35 l 2 -38 "
+Comment: 1,0:00:00.00,0:00:00.00,Karaoké,,0000,0000,0000,,
+Comment: 0,0:00:00.00,0:00:00.00, Karaoké Pluie,,0000,0000,0000,template noblank notext loop 3,!retime("syl",0,1000)!{\an5\c&HFFFFFF&\3c&HFFFFFF&\fscx5\fscy5\bord0\shad0\move($scenter,!$smiddle+20!,!$scenter+math.random(-50,50)!,!$middle+math.random(-80,-30)!)\t(0,1000,\fscx30\fscy30\bord0\shad0)\t(1000,1200,\alpha&HFF&)\t(0,2000,\frz!math.random(-500,500)!\frx!math.random(-500,500)!\fry!math.random(-500,500)!)\p1}m 2 2 b 4 0 6 0 8 2 b 10 4 9 7 8 8 b 6 10 4 10 2 8 b 1 7 0 4 2 2 "
+Comment: 0,0:00:00.00,0:00:00.00, Karaoké Pluie,,0000,0000,0000,template noblank notext loop 2,!retime("syl",0,1000)!{\an5\c&HFFFFFF&\3c&HFFFFFF&\fscx5\fscy5\bord0\shad0\move($scenter,!$smiddle+20!,!$scenter+math.random(-50,50)!,!$middle+math.random(-80,-30)!)\t(0,1000,\fscx40\fscy40\bord0\shad0)\t(800,1000,\alpha&HFF&)\t(0,2000,\frz!math.random(-500,500)!\frx!math.random(-500,500)!\fry!math.random(-500,500)!)\p1}m 2 2 b 4 0 6 0 8 2 b 10 4 9 7 8 8 b 6 10 4 10 2 8 b 1 7 0 4 2 2 "
+Comment: 0,0:00:00.00,0:00:00.00, Karaoké Pluie,,0000,0000,0000,template noblank notext loop 2,!retime("syl",0,1000)!{\an5\c&HFFFFFF&\3c&HFFFFFF&\fscx5\fscy5\bord0\shad0\move($scenter,!$smiddle+20!,!$scenter+math.random(-50,50)!,!$middle+math.random(-80,-30)!)\t(0,1000,\fscx20\fscy20\bord0\shad0)\t(800,1000,\alpha&HFF&)\t(0,2000,\frz!math.random(-500,500)!\frx!math.random(-500,500)!\fry!math.random(-500,500)!)\p1}m 2 2 b 4 0 6 0 8 2 b 10 4 9 7 8 8 b 6 10 4 10 2 8 b 1 7 0 4 2 2 "
+Comment: 0,0:00:00.00,0:00:00.00, Karaoké Pluie,,0000,0000,0000,template noblank notext loop 3,!retime("syl",-1000,1000)!{\an5\c&HFFFFFF&\fscx60\fscy60\bord0\shad0\move(!$scenter+math.random(-15,15)!,!$smiddle+math.random(-100,-50)!,!$scenter+math.random(-5,5)!,!$middle+5!,0,1000)\t(900,1200,\fscx0\fscy0\bord6\blur8)\t(0,2000,\alpha&HFF&)\p1}m 22 0 l 9 35 b 7 40 10 42 12 36 "
+Comment: 0,0:00:00.00,0:00:00.00, Karaoké Pluie,,0000,0000,0000,template noblank notext loop 3,!retime("syl",0,1000)!{\an5\c&HFFFFFF&\3c&HFFE1B4&\fscx5\fscy5\bord2\blur10\pos($scenter,!$smiddle+10!)\t(0,1000,\fscx100\fscy70\bord2\blur10)\t(0,1500,\alpha&HFF&)\p1}m 0 25 b 1 10 50 11 50 25 b 51 40 -1 40 0 25 m 2 23 b -5 38 49 39 49 25 b 50 14 6 11 2 23 "
+Comment: 1,0:00:00.00,0:00:00.00,Karaoké,,0000,0000,0000,,
+Comment: 1,0:00:00.00,0:00:00.00,Karaoké,,0000,0000,0000,,
+Dialogue: 0,0:00:13.64,0:00:19.17,Karaoké,,0000,0000,0000,,{\k23}A{\k15}no {\k19}hi {\k36}hon{\k24}to {\k18}ni {\k4}u{\k24}shi{\k33}na{\k29}tte {\k30}mo{\k26}no {\k45}tte {\k24}na{\k14}n{\k27}da{\k41}tta{\k118}ke {\k3}?
+Dialogue: 0,0:00:19.30,0:00:22.83,Karaoké,,0000,0000,0000,,{\k29}Do{\k16}u {\k13}ni {\k18}wa{\k36}su{\k38}re{\k43}tte {\k8}shi{\k57}ma{\k14}tta {\k81}yo
+Dialogue: 0,0:00:25.17,0:00:30.48, Karaoké Pluie,,0000,0000,0000,,{\k33}Yu{\k12}u{\k16}gu{\k22}re{\k23}de {\k14}fu{\k20}ta{\k30}ri {\k21}su{\k21}ko{\k11}shi{\k18}zu{\k18}tsu {\k20}mi{\k18}e {\k17}na{\k21}ku {\k32}na{\k25}tte{\k29}i{\k110}tte
+Dialogue: 0,0:00:30.90,0:00:35.45, Karaoké Pluie,,0000,0000,0000,,{\k29}So{\k16}re{\k16}na{\k18}no{\k16}ni {\k14}bo{\k25}ku{\k18}ra {\k27}ka{\k12}e{\k50}re {\k19}zu{\k45}ni {\k27}i{\k123}ta
+Dialogue: 0,0:00:35.88,0:00:41.41, Karaoké Pluie,,0000,0000,0000,,{\k45}Do{\k35}kko{\k21}ka {\k49}ni{\k142} {\k34}ko{\k42}wa{\k12}re {\k22}so{\k15}u {\k20}na {\k17}mo{\k23}ro{\k17}i {\k15}ko{\k22}ko{\k22}ro
+Dialogue: 0,0:00:41.52,0:00:46.29, Karaoké Pluie,,0000,0000,0000,,{\k50}Tsu{\k38}yo{\k24}ga{\k49}ru {\k18}{\k14}ko{\k20}to{\k18}ba {\k21}de {\k13}o{\k37}o{\k21}tte {\k14}ka{\k20}ku{\k18}shi{\k16}te{\k86}ru 
+Dialogue: 0,0:00:46.61,0:00:49.50, Karaoké Pluie,,0000,0000,0000,,{\k43}O{\k35}o{\k20}tte {\k16}ka{\k21}ku{\k17}shi{\k21}te{\k116}ru
+Dialogue: 0,0:00:49.82,0:00:54.71, Karaoké sengan,,0000,0000,0000,,{\k63}Sa{\k56}yo{\k92}na{\k17}ra {\k17}a{\k13}e{\k20}na{\k15}ku{\k58}na{\k50}tta{\k88}tte
+Dialogue: 0,0:00:54.77,0:01:00.22, Karaoké sengan,,0000,0000,0000,,{\k13}Bo{\k27}ku{\k35}ra {\k131}wa {\k19}tsu{\k21}zu{\k39}ki {\k32}ga {\k36}a{\k127}ru {\k15}ka{\k50}ra
+Dialogue: 0,0:01:01.24,0:01:06.08, Karaoké sengan,,0000,0000,0000,,{\k62}Ki{\k47}mi {\k120}no {\k13}i{\k17}na{\k13}i {\k23}se{\k31}ka{\k21}i {\k56}da{\k81}tte
+Dialogue: 0,0:01:06.16,0:01:11.14, Karaoké sengan,,0000,0000,0000,,{\k11}A{\k43}chi{\k20}ru {\k84}yo{\k38} {\k24}i{\k11}tsu{\k24}ka {\k15}no {\k18}i{\k51}ta{\k22}mi {\k130}mo
+Dialogue: 0,0:01:11.98,0:01:15.92, Karaoké Thunder,,0000,0000,0000,,{\k28}Ko{\k23}e{\k343}te
+Dialogue: 0,0:01:17.71,0:01:21.38, Karaoké Thunder,,0000,0000,0000,,{\k22}Ko{\k32}e{\k311}te
+Dialogue: 0,0:01:21.38,0:01:23.38,Karaoké,,0000,0000,0000,,
+Dialogue: 0,0:01:23.38,0:01:25.38,Karaoké,,0000,0000,0000,,
+Dialogue: 0,0:01:25.38,0:01:27.38,Karaoké,,0000,0000,0000,,
+Dialogue: 0,0:00:13.35,0:00:18.89,Copie de Karaoké1,,0000,0000,0000,,Je me suis toujours demander "mais qu'ai je perdu ce jour la"?
+Dialogue: 0,0:00:19.07,0:00:24.03,Copie de Karaoké1,,0000,0000,0000,,Cela fait tellement longtemps que j'ai oublié
+Dialogue: 0,0:00:24.85,0:00:30.44,Copie de Karaoké1,,0000,0000,0000,,Nous nous sommes faits distingués petit a petit pendant la nuit
+Dialogue: 0,0:00:30.55,0:00:35.35,Copie de Karaoké1,,0000,0000,0000,,Mais malgré cela on était toujours incapable de partir
+Dialogue: 0,0:00:35.70,0:00:41.16,Copie de Karaoké1,,0000,0000,0000,,Quelque part un âme douce et fragile
+Dialogue: 0,0:00:41.31,0:00:46.47,Copie de Karaoké1,,0000,0000,0000,,Fait bonne figure  elle se fait toute petite
+Dialogue: 0,0:00:46.60,0:00:49.68,Copie de Karaoké1,,0000,0000,0000,,Elle se fait toute petite
+Dialogue: 0,0:00:49.68,0:00:54.31,Copie de Karaoké1,,0000,0000,0000,,Au revoir,même si on peut plus se revoir
+Dialogue: 0,0:00:54.44,0:01:00.00,Copie de Karaoké1,,0000,0000,0000,,D'autre obstacles vont nous faire face
+Dialogue: 0,0:01:01.24,0:01:06.08,Copie de Karaoké1,,0000,0000,0000,,Si tu n'es plus dans ce monde
+Dialogue: 0,0:01:06.16,0:01:11.14,Copie de Karaoké1,,0000,0000,0000,,Je courrai et toute cette douleur
+Dialogue: 0,0:01:11.98,0:01:15.32,Copie de Karaoké1,,0000,0000,0000,,Je la surmonterais
+Dialogue: 0,0:01:17.71,0:01:21.38,Copie de Karaoké1,,0000,0000,0000,,Je la surmonterais
+Dialogue: 0,0:00:24.85,0:00:30.44,Copie de Copie de Karaoké1,,0000,0000,0000,,{\be30\pos(320,477)}Nous nous sommes faits distingués petit a petit pendant la nuit
+Dialogue: 0,0:00:30.55,0:00:35.35,Copie de Copie de Karaoké1,,0000,0000,0000,,{\be30\pos(320,477)}Mais malgré cela on était toujours incapable de partir
+Dialogue: 0,0:00:35.70,0:00:41.16,Copie de Copie de Karaoké1,,0000,0000,0000,,{\be30\pos(320,478)}Quelque part un âme douce et fragile
+Dialogue: 0,0:00:41.31,0:00:46.47,Copie de Copie de Karaoké1,,0000,0000,0000,,{\be30\pos(320,477)}Fait bonne figure  elle se fait toute petite
+Dialogue: 0,0:00:46.60,0:00:49.68,Copie de Copie de Karaoké1,,0000,0000,0000,,{\be30\pos(320,478)}Elle se fait toute petite
+Dialogue: 0,0:00:49.68,0:00:54.31,Copie de Copie de Karaoké1,,0000,0000,0000,,{\be30\pos(320,478)}Au revoir,même si on peut plus se revoir
+Dialogue: 0,0:00:54.44,0:01:00.00,Copie de Copie de Karaoké1,,0000,0000,0000,,{\be30\pos(320,478)}D'autre obstacles vont nous faire face
+Dialogue: 0,0:01:01.15,0:01:06.08,Copie de Copie de Karaoké1,,0000,0000,0000,,{\be30\pos(320,478)}Si tu n'es plus dans ce monde
+Dialogue: 0,0:01:06.16,0:01:11.14,Copie de Copie de Karaoké1,,0000,0000,0000,,{\be30\pos(320,478)}Je courrai et toute cette douleur
+Dialogue: 0,0:01:11.98,0:01:15.32,Copie de Copie de Karaoké1,,0000,0000,0000,,{\be30\pos(320,478)}Je la surmonterais
+Dialogue: 0,0:01:17.71,0:01:21.38,Copie de Copie de Karaoké1,,0000,0000,0000,,{\be30\pos(320,478)}Je la surmonterais
+Dialogue: 0,0:01:27.38,0:01:29.38,Karaoké,,0000,0000,0000,,{\be30\pos(320,478)}
+Dialogue: 0,0:01:29.38,0:01:31.38,Karaoké,,0000,0000,0000,,

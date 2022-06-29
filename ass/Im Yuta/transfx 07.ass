@@ -1,0 +1,27 @@
+﻿[Script Info]
+Title: Default Aegisub file
+ScriptType: v4.00+
+WrapStyle: 0
+PlayResX: 640
+PlayResY: 480
+ScaledBorderAndShadow: yes
+Video Aspect Ratio: 0
+Video Zoom: 6
+Video Position: 0
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Default,Arial,20,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,2,2,2,10,10,10,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Comment: 0,0:00:00.00,0:00:00.00,Default,,0000,0000,0000,code once,kich_co_touch = 180;
+Comment: 0,0:00:00.00,0:00:00.00,Default-furigana,,0000,0000,0000,code syl all,factor = 20; function char_counter(ref) ci[ref] = ci[ref] + 1; return "" end; ci = { 0 }; cn = _G.unicode.len(orgline.text_stripped:gsub(" ",""));
+Comment: 0,0:00:00.00,0:00:00.00,Default-furigana,,0000,0000,0000,template char,!retime("preline", factor*ci[1], $ldur+factor*(ci[1]-cn))!!char_counter(1)!{\an5\pos($scenter, $smiddle)\bord1\blur5\3c&HFFFFFF&\c&HFFFFFF&\t(0,!time!,\fad(200,200))}
+Comment: 0,0:00:00.00,0:00:00.00,Default-furigana,,0000,0000,0000,template char,!retime("preline", factor*ci[1], math.random(200,800)+factor*(ci[1]-cn))!!char_counter(1)!{\an5\pos($scenter, !$smiddle-math.random(-5,5)!)\1a&HFF&\3c&HFFFFFF&\bord1\blur5\fscx0\fscy0\t(0,!$dur+math.random(500,800)!,\fscx!kich_co_touch!\fscy!kich_co_touch!\fad(200,200))\p1}m 14 11 b 14 0 -1 0 -1 11 b -1 21 14 21 14 11
+Comment: 0,0:00:00.00,0:00:00.00,Default-furigana,,0000,0000,0000,template char,!retime("preline", factor*ci[1], math.random(200,800)+factor*(ci[1]-cn))!!char_counter(1)!{\an5\pos($scenter, !$smiddle-math.random(-5,5)!)\1a&HFF&\3c&HFFFFFF&\bord1\blur5\fscx0\fscy0\t(0,!$dur+math.random(500,800)!,\fscx!kich_co_touch*2/3!\fscy!kich_co_touch*2/3!\fad(200,200))\p1}m 14 11 b 14 0 -1 0 -1 11 b -1 21 14 21 14 11
+Comment: 0,0:00:00.00,0:00:00.00,Default-furigana,,0000,0000,0000,template char,!retime("preline", factor*ci[1], math.random(200,800)+factor*(ci[1]-cn))!!char_counter(1)!{\an5\pos($scenter, !$smiddle-math.random(-5,5)!)\1a&HFF&\3c&HFFFFFF&\bord1\blur5\fscx0\fscy0\t(0,!$dur+math.random(500,800)!,\fscx!kich_co_touch/3!\fscy!kich_co_touch/3!\fad(200,200))\p1}m 14 11 b 14 0 -1 0 -1 11 b -1 21 14 21 14 11
+Comment: 0,0:00:00.00,0:00:00.00,Default-furigana,,0000,0000,0000,template char,!retime("preline", $ldur-math.random(300,400), $ldur+math.random(-1800,500))!!char_counter(1)!{\an5\pos($scenter, !$smiddle-math.random(-5,5)!)\1a&HFF&\3c&HFFFFFF&\bord1\blur5\fscx0\fscy0\t(0,!$dur+math.random(500,800)!,\fscx!kich_co_touch!\fscy!kich_co_touch!\fad(200,200))\p1}m 14 11 b 14 0 -1 0 -1 11 b -1 21 14 21 14 11
+Comment: 0,0:00:00.00,0:00:00.00,Default-furigana,,0000,0000,0000,template char,!retime("preline", $ldur-math.random(300,400), $ldur+math.random(-1800,500))!!char_counter(1)!{\an5\pos($scenter, !$smiddle-math.random(-5,5)!)\1a&HFF&\3c&HFFFFFF&\bord1\blur5\fscx0\fscy0\t(0,!$dur+math.random(500,800)!,\fscx!kich_co_touch*2/3!\fscy!kich_co_touch*2/3!\fad(200,200))\p1}m 14 11 b 14 0 -1 0 -1 11 b -1 21 14 21 14 11
+Comment: 0,0:00:00.00,0:00:00.00,Default-furigana,,0000,0000,0000,template char,!retime("preline", $ldur-math.random(300,400), $ldur+math.random(-1800,500))!!char_counter(1)!{\an5\pos($scenter, !$smiddle-math.random(-5,5)!)\1a&HFF&\3c&HFFFFFF&\bord1\blur5\fscx0\fscy0\t(0,!$dur+math.random(500,800)!,\fscx!kich_co_touch/3!\fscy!kich_co_touch/3!\fad(200,200))\p1}m 14 11 b 14 0 -1 0 -1 11 b -1 21 14 21 14 11
+Dialogue: 0,0:00:00.00,0:00:05.00,Default,,0000,0000,0000,,

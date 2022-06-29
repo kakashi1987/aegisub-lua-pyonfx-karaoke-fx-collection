@@ -1,0 +1,22 @@
+﻿[Script Info]
+Title: Default Aegisub file
+ScriptType: v4.00+
+WrapStyle: 0
+PlayResX: 640
+PlayResY: 480
+ScaledBorderAndShadow: yes
+Video Aspect Ratio: 0
+Video Zoom: 6
+Video Position: 0
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Default,Arial,20,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,2,2,2,10,10,10,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Comment: 0,0:00:00.00,0:00:00.00,Default,lead-in (text),0000,0000,0000,template syl,!retime("start2syl",-400+syl.i*50,0)!{\an5\pos($center,$middle)\blur3\fad(300,0)}
+Comment: 5,0:00:00.00,0:00:00.00,Default,hilight (char),0000,0000,0000,template char noblank,!retime("syl",0,360)!{\an5\pos($scenter,$smiddle)\fad(0,!$dur+360!)\blur9\bord1\t(0,50,\fscx200\fscy200)\t(50,!$dur+360!,\alpha&HFF&\fscx100\fscy100)}
+Comment: 0,0:00:00.00,0:00:00.00,Default,,0000,0000,0000,code once, point = {"m 20 0 b 7 0 7 20 20 20 b 33 20 33 0 20 0 "} color = {"&HA13740&","&HA13740&","&HA13740&"}
+Comment: 0,0:00:00.00,0:00:00.00,Default,,0000,0000,0000,template syl notext noblank Loop 3,!retime("syl",0,2400)!{\an5\move($center,$middle,!$center+math.random(-73,73)!,!$middle+math.random(-78,80)!)\fad(0,300)\fscx20\fscy20\bord3\blur8\c&HFFFFFF&\3c!color[math.random(3)]!\t(0,4500,\frz!math.random(-560,560)!)\p1}!point[1]!
+Dialogue: 0,0:00:00.00,0:00:05.00,Default,,0000,0000,0000,,

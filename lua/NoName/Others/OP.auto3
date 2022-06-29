@@ -1,0 +1,117 @@
+-- Aegisub Automation script
+-- écrit par Kat
+
+--Requires this style in the .ass file to work:
+--Style: etoile
+
+
+name = "One piece Op saison 9"
+description = "etoile multi colore + fscy mutlicolore"
+configuration = {}
+version, kind = 3, 'basic_ass'
+
+---parametres
+
+-->--includes and global variables
+include("karaskel-adv.lua")
+cp=0
+time=1
+--<--end include
+
+function do_syllable(meta, styles, config, line, syl)
+local result = {n=0}
+function result.add() local l = copy_line(line); table.insert(result, l); return l end
+  if syl.text == "" then
+   return { n=0 }
+  end
+  if syl.text == " " then
+   return { n=0 }
+  end
+
+local x=syl.center + line.centerleft
+local y=40
+if time ~= line.start_time then
+  time=line.start_time
+  cp=-1
+end
+cp=cp+1
+--end paramtres
+
+--kara effect part
+
+--syll intro
+l=result.add()
+l.text = string.format("{\\an5\\move(%d,%d,%d,%d)\\alpha&HFF&\\frx%d\\t(\\alpha&H00&\\frx0)}%s",x-30,y-20,x,y,math.random(360,1080),syl.text_stripped)
+l.start_time = line.start_time -28 +cp*1
+l.end_time = line.start_time + cp*10 -15
+
+--syll before effect
+l=result.add()
+l.layer=87
+l.text = string.format("{\\an5\\pos(%d,%d)}%s",x,y,syl.text_stripped)
+l.start_time = line.start_time +cp*10 -15
+l.end_time = line.start_time + syl.start_time/10
+
+--syll HL mulicolored layer 1
+if  (syl.text_stripped == ".") then elseif (syl.text_stripped == ",") then elseif (syl.text_stripped == "\"") then else
+ for i=0,20 do
+  l=result.add()
+  l.layer=88
+  l.text = string.format("{\\an5\\pos(%d,%d)\\3a&HFF&\\4a&HFF&\\1c&H%02X%02X%02X&\\fscx100\\fscy100\\t(\\1a&HBF&\\fscy%d\\fscx%d)}%s",x,y,math.random(0,255),math.random(0,255),math.random(0,255),150+math.random(-50,100),math.random(-50,100)+150,syl.text_stripped)
+  l.start_time = line.start_time + syl.start_time/10 + i*2
+  l.end_time = l.start_time + syl.duration + 5 + math.random(15,50)
+  if (l.end_time > line.end_time) then l.end_time = line.end_time end
+ end
+end
+
+--syll HL multicolored layer 2
+if  (syl.text_stripped == ".") then elseif (syl.text_stripped == ",") then elseif (syl.text_stripped == "\"") then else
+ for i=0,20 do
+  l=result.add()
+  l.layer=89
+  l.text = string.format("{\\an5\\pos(%d,%d)\\3a&HFF&\\4a&HFF&\\1c&H%02X%02X%02X&\\fscx100\\fscy100\\t(\\1a&HBF&\\fscy%d\\fscx%d)}%s",x,y,math.random(0,255),math.random(0,255),math.random(0,255),150+math.random(-50,100),math.random(-50,100)+150,syl.text_stripped)
+  l.start_time = line.start_time + syl.start_time/10 + i*2
+  l.end_time = l.start_time + syl.duration + 5 + math.random(15,50)
+  if (l.end_time > line.end_time) then l.end_time = line.end_time end
+  end
+end
+
+--syll HL white layer 3
+if  (syl.text_stripped == ".") then elseif (syl.text_stripped == ",") then elseif (syl.text_stripped == "\"") then else
+ for i=0,20 do
+  l=result.add()
+  l.layer=90
+  l.text = string.format("{\\an5\\pos(%d,%d)\\3a&HFF&\\4a&HFF&\\1c&H%02X%02X%02X&\\fscx100\\fscy100\\t(\\1a&HBF&\\fscy%d\\fscx%d)}%s",x,y,math.random(254,255),math.random(254,255),math.random(254,255),60+math.random(-50,50),math.random(-50,100)+60,syl.text_stripped)
+  l.start_time = line.start_time + syl.start_time/10 + i*2
+  l.end_time = l.start_time + syl.duration + 5 + math.random(15,50)
+  if (l.end_time > line.end_time) then l.end_time = line.end_time end
+ end
+end
+--multicolored stars
+for i=0,80 do
+   l = result.add()
+   l.style = "etoile"
+   l.layer=1
+   l.text = string.format("{\\an5\\move(%d,%d,%d,%d)\\alpha&H80&\\1c&H%02X%02X%02X&\\shad0\\bord1\\3c&HFFFFFF&\\fscx100\\fscy100\\t(\\alpha&HD0&)}{\\p2} m 0 -6 l 2 -2 6 -2 2 1 5 5 0 3 -5 5 -2 1 -6 -2 -2 -2{\\p0}", x+math.random(-10,10), y+math.random(-10,10), x+math.random(-100,100), y+math.random(-100,100),math.random(0,255),math.random(0,255),math.random(0,255),  syl.text)
+   l.start_time = line.start_time + syl.start_time/10 + i*2
+   l.end_time = line.start_time + syl.start_time/10 + syl.duration + i*5
+end 
+
+for i=0,80 do
+   l = result.add()
+   l.style = "etoile"
+   l.layer=1
+   l.text = string.format("{\\an5\\move(%d,%d,%d,%d)\\alpha&H80&\\1c&H%02X%02X%02X&\\shad0\\bord1\\3c&HFFFFFF&\\fscx100\\fscy100\\t(\\alpha&HD0&)}{\\p3} m 20 0  b  20 10  30 20  40 20  b  30 20  20 30  20 40  b  20 30  10 20  0 20  b  10 20  20 10  20 0 {\\p0}", x+math.random(-10,10), y+math.random(-10,10), x+math.random(-100,100), y+math.random(-100,100),math.random(0,255),math.random(0,255),math.random(0,255),syl.text)
+   l.start_time = line.start_time + syl.start_time/10 + i*2
+   l.end_time = line.start_time + syl.start_time/10 + syl.duration + i*5
+end 
+for i=0,40 do
+   l = result.add()
+   l.style = "etoile"
+   l.layer=1
+   l.text = string.format("{\\an5\\move(%d,%d,%d,%d)\\alpha&H80&\\1c&H%02X%02X%02X&\\shad0\\bord1\\3c&HFFFFFF&\\fscx100\\fscy100\\t(\\alpha&HD0&)}{\\p4} m 20 0  b  20 10  30 20  40 20  b  30 20  20 30  20 40  b  20 30  10 20  0 20  b  10 20  20 10  20 0 {\\p0}", x+math.random(-10,10), y+math.random(-10,10), x+math.random(-100,100), y+math.random(-100,100),math.random(0,255),math.random(0,255),math.random(0,255),syl.text)
+   l.start_time = line.start_time + syl.start_time/10 + i*2
+   l.end_time = line.start_time + syl.start_time/10 + syl.duration + i*5
+end 
+  return result
+end

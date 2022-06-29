@@ -1,0 +1,175 @@
+-- Aegisub automation script for Mai-Otome's 2nd OP: Crystal Energy
+-- Slightly adopted standards from Niels Martin Hansen
+-- Written by xat, released for public domain
+
+include("utils.lua")
+
+name = "Crystal Energy Style v2"
+description = "Includes stylization by scomments."
+
+version, kind, configuration = 3, 'basic_ass', {}
+
+function leadBlur(line, output, leadtype, dur, x, y, delta, alphafreq, blurfactor, origsize, sizefreq, primcol, outlncol, shadcol)
+	local totalSize = origsize+sizefreq
+	local alpha = string.format("\\1a&H%s&\\2a&H%s&\\3a&H%s&\\4a&H%s&", alphafreq, alphafreq, "7F", "F4")
+	if leadtype == 1 then
+		aegisub.output_debug("::Lead type is 1:: Performing lead in on \"" .. line.text_stripped .. "\"")
+		translate = string.format("\\move(%d,%d,%d,%d,%d,%d)", x-delta, y, x, y, 0, dur)
+		transform = string.format("\\t(%d,%d,", 0, dur)
+		preColors = "\\1c&HFFFFFF&\\3c&HFFFFFF&\\4c&HFFFFFF&" .. alpha
+		postColors = string.format("\\1c&H%s&\\3c&H%s&\\4c&H%s&", primcol, outlncol, shadcol)
+		preSize = string.format("\\fscx%d", totalSize)
+		postSize = string.format("\\fscx%d", origsize)
+		fade = string.format("\\fad(%d,%d)", dur, 0)
+		misc = "\\an5\\be1"
+	elseif leadtype == 2 then
+		aegisub.output_debug("::Lead type is 2:: Performing lead out on \"" .. line.text_stripped .. "\"")
+		translate = string.format("\\move(%d,%d,%d,%d,%d,%d)", x, y, x+delta, y, 0, dur)
+		transform = string.format("\\t(%d,%d,", 0, dur)
+		preColors = string.format("\\1c&H%s&\\3c&H%s&\\4c&H%s&", primcol, outlncol, shadcol) .. alpha
+		postColors = "\\1c&HFFFFFF&\\3c&HFFFFFF&\\4c&HFFFFFF&"
+		preSize = string.format("\\fscx%d", origsize)
+		postSize = string.format("\\fscx%d", totalSize)
+		fade = string.format("\\fad(%d,%d)", 0, dur)
+		misc = "\\an5\\be1"
+	end
+	for n=0, 4 do
+		local curline = copy_line(line)
+		curline.text = "{" .. preColors .. preSize .. misc .. "}{" .. fade .. translate .. transform .. postSize .. postColors .. ")}" .. curline.text_stripped
+		if leadtype == 1 then
+			curline.end_time = curline.end_time-curline.end_time+curline.start_time
+			curline.start_time = curline.start_time-dur/10
+			totalSize = totalSize - (totalSize*blurfactor)
+			preSize = string.format("\\fscx%d", totalSize)
+		elseif leadtype == 2 then
+			curline.start_time = curline.start_time-curline.start_time+curline.end_time
+			curline.end_time = curline.end_time+dur/10
+			totalSize = totalSize - (totalSize*blurfactor)
+			postSize = string.format("\\fscx%d", totalSize)
+		end
+		table.insert(output, curline)
+	end
+end
+
+function dosyll(line, output, leadin, leadout, color1, color2, color3, color4, special, meta, styles)
+		line.end_time = line.end_time+leadout/10
+		line.start_time = line.start_time-leadin/10
+		local ltotaldur = (line.end_time - line.start_time) * 10
+		local totalx, totaly = aegisub.text_extents(styles[line.style], line.text_stripped)
+		local curx, cury = (meta.res_x - totalx) / 2, 20
+		local startx = curx
+		local tstart, tend = 0+leadin, 0
+		for j = 1, line.karaoke.n-1 do
+			local syl, syllin = line.karaoke[j], copy_line(line)
+			tend = tstart + syl.duration*10	
+			local extx, exty, extd, extl = aegisub.text_extents(styles[line.style], syl.text_stripped)
+			if special == 1 then
+				aegisub.output_debug("::Special Line:: Performing special on current syllable: \"" .. syl.text .. "\"")
+				transform = string.format("{\\t(%d,%d,\\1c&H%s&)\\t(%d,%d,\\3c&H%s&)\\t(%d,%d,\\3c&H%s&)}%s", tstart, tend, color1, tstart, tstart+1, color1, tstart+1, tend, color3, syl.text)
+			else
+				transform = string.format("{\\t(%d,%d,\\1c&H%s&)\\t(%d,%d,\\1c&H%s&)}%s", tstart, tstart+50, color1, tend-50, tend, color2, syl.text)
+			end
+			syllin.text = string.format("{\\1c&H%s&}{\\fad(%d,%d)\\an4\\move(%d,%d,%d,%d,%d,%d)}", color2, leadin, leadout, curx-16, cury, curx+16, cury, 0, ltotaldur) .. transform
+			table.insert(output, syllin)
+			curx = curx + extx + 1
+			tstart = tend
+		end
+end
+
+function dokanji(line, output, leadin, leadout, color1, color2, color3, color4, special, meta, styles)
+		line.end_time = line.end_time+leadout/10
+		line.start_time = line.start_time-leadin/10
+		local ltotaldur = (line.end_time - line.start_time) * 10
+		local totalx, totaly = aegisub.text_extents(styles[line.style], line.text_stripped)
+		local curx, cury = 620, (meta.res_y - totalx)/2
+		local starty = cury
+		local tstart, tend = 0+leadin, 0
+		for j = 1, line.karaoke.n-1 do
+			local syl, syllin = line.karaoke[j], copy_line(line)
+			tend = tstart + syl.duration*10	
+			local extx, exty, extd, extl = aegisub.text_extents(styles[line.style], syl.text_stripped)
+			if special == 1 then
+				aegisub.output_debug("::Special Line:: Performing special on current syllable: \"" .. syl.text .. "\"")
+				transform = string.format("{\\t(%d,%d,\\1c&H%s&)\\t(%d,%d,\\3c&H%s&)\\t(%d,%d,\\3c&H%s&)}%s", tstart, tend, color1, tstart, tstart+1, color1, tstart+1, tend, color3, syl.text)
+			else
+				transform = string.format("{\\t(%d,%d,\\1c&H%s&)\\t(%d,%d,\\1c&H%s&)}%s", tstart, tstart+50, color1, tend-50, tend, color2, syl.text)
+			end
+			syllin.text = string.format("{\\1c&H%s&}{\\fad(%d,%d)\\an4\\move(%d,%d,%d,%d,%d,%d)}", color2, leadin, leadout, curx, cury-8, curx, cury+8, 0, ltotaldur) .. transform
+			table.insert(output, syllin)
+			cury = cury + exty
+			tstart = tend
+		end
+end
+
+function process_lines(meta, styles, lines, config)
+	local output = { n=0 }
+	local color1, color2, color3, color4 = string.sub(styles[0].color1,3), string.sub(styles[0].color2,3), string.sub(styles[0].color3,3), string.sub(styles[0].color4,3)
+	local specol1, specol2, specol3 = "&HC0FFBC&", "&H0FD400&", "&H025C02&"
+
+	local leadin, leadout, spec = 300, 300, 0
+
+	for i=0, lines.n-1 do
+		aegisub.report_progress(i/lines.n*100)
+		if lines[i].kind == "scomment" then
+			local curline = lines[i+1]
+			local totalx, totaly = aegisub.text_extents(styles[curline.style], curline.text_stripped)
+			local curx, cury = 325, 20 --I don't know why 325 is more accurate D:
+			local delta, blur = 300, 0.035
+			local alpha = "33"
+			if lines[i].text == "in only" then
+				if curline.style == "japro" then
+					leadBlur(curline, output, 1, leadin, curx-16, cury, delta, alpha, blur, 100, 50, color2, color3, color4)
+				leadin = 0
+				end
+			elseif lines[i].text == "out only" then
+				if curline.style == "japro" then
+					leadBlur(curline, output, 2, leadout, curx+16, cury, delta, alpha, blur, 100, 50, color2, color3, color4)
+				leadout = 0
+				end
+			elseif lines[i].text == "in and out" then
+				if curline.style == "japro" then
+					leadBlur(curline, output, 1, leadin, curx-16, cury, delta, alpha, blur, 100, 50, color2, color3, color4)
+					leadBlur(curline, output, 2, leadout, curx+16, cury, delta, alpha, blur, 100, 50, color2, color3, color4)
+				leadin, leadout = 0, 0
+				end
+			elseif lines[i].text == "fade burst" then
+				if curline.style == "japro" then
+					leadBlur(curline, output, 2, leadout, curx+16, cury, 0, "CC", blur, 100, 22, color2, color3, color4)
+				leadout = 0
+				end
+			elseif lines[i].text == "special" then
+				if curline.style == "japro" then
+					leadBlur(curline, output, 1, leadin, curx-16, cury, delta, alpha, blur, 100, 50, specol2, specol3, color4)
+					leadBlur(curline, output, 2, leadout, curx+16, cury, delta, alpha, blur, 100, 50, specol1, specol3, color4)
+				leadin, leadout= 0, 0
+				end
+				spec = 1
+			end
+		elseif lines[i].kind ~= "dialogue" then
+			table.insert(output, lines[i])
+		elseif lines[i].kind == "dialogue" and lines[i].style == "japro" then
+			aegisub.output_debug("::Working:: Working on on romaji (line: " .. lines[i].text_stripped .. ")")
+			local line = lines[i]
+			if spec == 1 then
+				dosyll(line, output, leadin, leadout, specol1, specol2, specol3, color4, 1, meta, styles)
+			else
+				dosyll(line, output, leadin, leadout, color1, color2, color3, color4, 0, meta, styles)
+			end
+			leadin, leadout, spec = 300, 300, 0
+		elseif lines[i].kind == "dialogue" and lines[i].style == "japka" then
+			aegisub.output_debug("::Working:: Working on on kanji (line: " .. lines[i].text_stripped .. ")")
+			local line = lines[i]
+			if spec == 1 then
+				dokanji(line, output, leadin, leadout, specol1, specol2, specol3, color4, 1, meta, styles)
+			else
+				dokanji(line, output, leadin, leadout, color1, color2, color3, color4, 0, meta, styles)
+			end
+			leadin, leadout, spec = 300, 300, 0
+		elseif lines[i].kind == "dialogue" and lines[i].style == "engsub" then
+			lines[i].text = "{\\pos(320,465)}" .. lines[i].text
+			table.insert(output, lines[i])
+		end
+	end
+	aegisub.output_debug("Process completed without error! <3")
+	return output
+end

@@ -1,0 +1,32 @@
+﻿[Script Info]
+Title: Default Aegisub file
+ScriptType: v4.00+
+WrapStyle: 0
+PlayResX: 640
+PlayResY: 480
+ScaledBorderAndShadow: yes
+Last Style Storage: Default
+Audio File: drill2_audio.mp3
+Video File: ?dummy:30.000000:8000:640:480:0:0:0:c
+Video Aspect Ratio: 0
+Video Zoom: 7
+Video Position: 90
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: English-furigana,Arial,18,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,1,1,5,10,10,10,1
+Style: Default-furigana,Arial,10,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,1,1,2,10,10,10,1
+Style: Default,Arial,20,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,2,2,2,10,10,10,1
+Style: English,Arial,20,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,2,0,5,10,10,10,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Comment: 0,0:00:00.00,0:00:00.00,English,Lead-in,0000,0000,0000,template syl,!retime("start2syl",0,0)!{\an5\pos($center,$middle)}
+Dialogue: 0,0:00:00.68,0:00:02.94,English,,0000,0000,0000,karaoke,{\k14}Just {\k9}your {\k38}scent {\k15}and {\k23}takes {\k9}me {\k17}back {\k11}to {\k21}times {\k8}we {\k14}were {\k12}to{\k17}geth{\k18}er
+Dialogue: 0,0:00:02.97,0:00:05.08,English,,0000,0000,0000,karaoke,{\k6}Tender{\k5}#{\k24}# {\k16}eyes {\k7}have {\k16}stole {\k13}my {\k22}heart {\k21}like {\k12}no {\k20}one {\k22}oth{\k28}er
+Dialogue: 0,0:00:05.15,0:00:07.02,English,,0000,0000,0000,karaoke,{\k20}Ba{\k20}by, {\k14}I {\k31}can't {\k20}e{\k9}rase {\k10}you {\k19}from {\k17}my {\k27}mind
+Dialogue: 0,0:00:07.05,0:00:09.23,English,,0000,0000,0000,karaoke,{\k15}You {\k19}need {\k8}to {\k14}see {\k13}I'll {\k14}be {\k15}right {\k16}here {\k8}and {\k20}wait {\k15}until {\k17}you {\k44}come
+Dialogue: 0,0:00:09.25,0:00:11.06,English,,0000,0000,0000,karaoke,{\k8}I {\k13}used {\k12}it {\k11}all {\k16}to {\k24}get {\k11}to {\k16}you, {\k21}even {\k15}if {\k9}I {\k25}lose
+Dialogue: 0,0:00:11.53,0:00:13.27,English,,0000,0000,0000,karaoke,{\k30}I'll {\k18}find {\k9}a {\k13}way {\k27}to {\k25}get {\k15}to {\k37}you
+Dialogue: 0,0:00:13.24,0:00:15.49,English,,0000,0000,0000,karaoke,{\k13}In {\k10}the {\k24}end {\k25}I'll {\k14}be {\k12}the {\k21}one, {\k17}the {\k17}one {\k10}your {\k16}gonna {\k46}choose
+Dialogue: 0,0:00:15.52,0:00:17.87,English,,0000,0000,0000,karaoke,{\k11}The {\k17}game {\k19}has {\k27}started {\k26}girl {\k13}so {\k29}whatcha {\k23}gonna {\k70}do?

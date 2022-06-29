@@ -1,0 +1,27 @@
+﻿[Script Info]
+Title: Default Aegisub file
+ScriptType: v4.00+
+WrapStyle: 0
+PlayResX: 640
+PlayResY: 480
+ScaledBorderAndShadow: yes
+Last Style Storage: Default
+Video File: ..\video prueba.avi
+Video Aspect Ratio: 0
+Video Zoom: 8
+Video Position: 180
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Default-furigana,Arial,10,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,1,1,2,10,10,10,1
+Style: Default,BrushArt,20,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,0,2,5,10,10,10,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Comment: 0,0:00:00.00,0:00:00.00,Default,,0000,0000,0000,code once,star = {"m 26 0 l 25 25 l 0 26 l 25 27 l 26 52 l 27 27 l 52 26 l 27 25","m 12 0 l 0 12 l 12 24 l 24 12"}; sphere = "m 16 11 b 16 0 0 0 0 11 b 0 22 16 22 16 11" rx = 30; ry = 30; vel = 620; temp = {}; function set_temp(ref,val) temp[ref] = val; return val; end
+Comment: 1,0:00:00.00,0:00:00.00,Default,,0000,0000,0000,template syl noblank,!retime("start2syl",50*(syl.i-$syln-1),0)!{\an5\pos($center,$middle)\fad(300,0)}
+Comment: 1,0:00:00.00,0:00:00.00,Default,,0000,0000,0000,template char noblank,!retime("syl",0,300)!{\an5\move($center,$middle,!$center+math.random(-30,30)!,!$middle+math.random(-30,30)!)\t(0,!$dur+300!,\fr!math.random(-360,360)!\frx!math.random(-360,360)!\fry!math.random(-360,360)!)\t(0,!$dur+300!,\fscx60\fscy60\blur2\c!line.styleref.color3!)\fad(0,300)}
+Comment: 0,0:00:00.00,0:00:00.00,Default,,0000,0000,0000,template syl noblank loop 8,!retime("syl",0,300)!{\an5\move(!$center+math.random(math.floor(-0.5*$width),math.ceil(0.5*$width))!,!$middle+math.random(math.floor(-0.5*$height),math.ceil(0.5*$height))!,!$center+math.random(20,40)*(-1)^math.random(2)!,!$middle+math.random(20,40)*(-1)^math.random(2)!)\t(0,!$dur+300!,\fr!math.random(-360,360)!\frx!math.random(-360,360)!\fry!math.random(-360,360)!)\bord0.5\blur1\3c!(j==1) and set_temp("tonalidad",_G.ass_color(_G.HSV_to_RGB(15*math.random(24),1,1))) or temp.tonalidad!\fscx20\fscy20\fad(0,300)\p1}!star[math.random(2)]!
+Comment: 1,0:00:00.00,0:00:00.00,Default,,0000,0000,0000,template syl noblank loop 12,!retime("presyl",-vel,-200*(maxj-j)/(maxj-1))!{\an5\pos(!$center-rx+rx*math.cos(math.pi*(maxj-j)/(maxj-1))!,!$middle+((-1)^syl.i)*ry*math.sin(math.pi*(maxj-j)/(maxj-1))!)\bord0\fscx!22+4*j!\fscy!22+4*j!\alpha&HFF&\t(!vel*(j-1)/maxj!,!vel*(j-1)/maxj+1!,\alpha&H50&)\blur!2*(j-1)/(maxj-1)!\fad(0,100)\p1\c&H44C08B&}!sphere!
+Dialogue: 0,0:00:01.00,0:00:05.60,Default,,0000,0000,0000,karaoke,{\k27}A{\k12}no {\k44}su{\k21}i{\k26}he{\k9}i{\k32}se{\k13}n {\k25}ga {\k21}to{\k15}o{\k34}za{\k38}kat{\k34}te {\k16}i{\k93}ku
+Dialogue: 0,0:00:07.50,0:00:13.47,Default,,0000,0000,0000,karaoke,{\k21}A{\k10}o {\k51}su{\k22}gi{\k13}ta {\k27}so{\k21}ra {\k17}ni {\k24}wa {\k19}a{\k22}shi{\k14}ta {\k24}su{\k25}ra {\k14}e{\k22}ga{\k20}ke{\k61}na{\k20}ku {\k150}te

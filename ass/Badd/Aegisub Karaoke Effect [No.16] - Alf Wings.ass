@@ -1,0 +1,39 @@
+﻿[Script Info]
+Title: Default Aegisub file
+ScriptType: v4.00+
+WrapStyle: 0
+ScaledBorderAndShadow: yes
+Collisions: Normal
+Last Style Storage: Default
+Scroll Position: 0
+Active Line: 0
+Video Zoom Percent: 1
+YCbCr Matrix: None
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Default,Maiandra GD,45,&H00EED2B2,&H000000FF,&H007D5C33,&H00000000,-1,0,0,0,100,100,0,0,1,2,0,5,10,10,10,1
+Style: Eng,OCR A Extended,30,&H00B2EBEE,&H000000FF,&H0033697D,&H00000000,-1,0,0,0,100,100,0,0,1,2,0,2,10,10,265,1
+Style: Viet,UVN May Chu P12,30,&H19EEB2C2,&H000000FF,&H007D3351,&H00000000,-1,0,0,0,100,100,0,0,1,2,0,2,10,10,200,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Comment: 0,0:00:00.00,0:00:00.00,Default,,0,0,0,,Kara-Eff được viết bởi Badd ( This Kara-Eff was written by Badd ), nếu sử dụng xin ghi lại một dòng credit - Kara-FX by Badd ^^ ( If you use it, please leave a credit FX to me ). Cảm ơn bạn ( Thanks )
+Comment: 0,0:00:00.00,0:00:00.00,Default,AutoTags,0,0,0,code syl all,
+Comment: 0,0:00:00.00,0:00:00.00,Default,AutoTags,0,0,0,code syl all,  function AutoTags(Intervalo,Dato1,Dato2)            local RESULTADO=""     local SUERTE = 0     local CONTADOR = 0     local ARREGLO = 0                           local count = math.ceil(line.duration/Intervalo)                 			ARREGLO = {Dato1,Dato2}    			              for i = 1, count do               CONTADOR = i    	    	    		if Dato1 and Dato2 then     					if  CONTADOR%2 ==0 then    								SUERTE = ARREGLO[1]    					else    								SUERTE = ARREGLO[2]    					end	    		end     				    	RESULTADO = RESULTADO .."\\t(" ..(i-1)*Intervalo.. "," ..i*Intervalo.. ",\\" ..SUERTE..")"..""     			     end         		     return RESULTADO	  	    	               end
+Comment: 0,0:00:00.00,0:00:00.00,Default,,0,0,0,code syl all,function char_counter(ref) ci[ref] = ci[ref] + 1; return "" end
+Comment: 0,0:00:00.00,0:00:00.00,Default,,0,0,0,code line syl all,flycolor = "&HFFBD00&"
+Comment: 0,0:00:00.00,0:00:00.00,Default,,0,0,0,code line all,ci = { 0 }; cn = _G.unicode.len(orgline.text_stripped:gsub(" ","")) ; lead = "300" ; shape = "m 18 39 b 23 28 35 24 35 16 b 36 8 23 0 18 11 b 14 0 0 8 1 16 b 1 24 13 28 18 39" ;
+Comment: 0,0:00:00.00,0:00:00.00,Default,,0,0,0,code syl all,size = "10" ; vel = "650" ; fxgroup.firstsyl = syl.i == 1 ; fxgroup.endsyl = syl.i == syl.n ; lead = "600" ; random = {"0","1","2","3","4"} ; randomfr = {"frx","fry","frz"} ; char = {"a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z","A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"}
+Comment: 1,0:00:00.00,0:00:00.00,Default,lead-in,0,0,0,template char,!char_counter(1)!!retime("start2syl",-$lright+(ci[1]-1)*50,0)!{\blur4\c!line.styleref.color3!\3c!line.styleref.color1!\1a&H50&\bord0\t(0,!line.duration-line.duration/2!,\alpha0\bord!line.styleref.outline!\c!line.styleref.color1!\3c!line.styleref.color3!)\fry!math.random(-360,360)!\t(0,!line.duration-line.duration/1.5!,\fry0)\fad(400,0)\an5\moves3(!$center+100!,!$middle!,!$center!,!$middle-85*((-1)^ci[1])!,$scenter,!$smiddle!,0,!line.duration-line.duration/1.5!)}
+Comment: 13,0:00:00.00,0:00:00.00,Default,color,0,0,0,template char notext syl noblank loop 15 fxgroup normal,!retime("syl",-math.random(-500,500)+(j-1)*600,100+(j-1)*500+600)!{\fnArial\t(,\frx3)\bord0.5\blur4\c!_G.ass_color(_G.HSV_to_RGB($si/$syln*200,0.7,1))!\3c!_G.ass_color(_G.HSV_to_RGB($si/$syln*200,0.7,1))!\alpha&H50&\fscx30\fscy30\an5\org($center,!$middle-720!)\pos(!$left+(($right-$left)/maxj*(j-1))+math.random(-25,45)!,$bottom)}!char[math.random(52)]!
+Comment: 1,0:00:00.00,0:00:00.00,Default,color,0,0,0,template noblank notext,!retime("syl",0,600)!{\an5\bord0\shad0\1a&H40&\c!_G.ass_color(_G.HSV_to_RGB($si/$syln*200,0.7,1))!\move($right,$middle,$right,!$middle-80!,$dur,!line.duration!)\p1\!AutoTags(100,'frz30','frz-30')!}m 0 43 b 9 11 16 4 45 0 b 48 17 48 26 0 43
+Comment: 1,0:00:00.00,0:00:00.00,Default,canh',0,0,0,template noblank notext,!retime("syl",0,600)!{\fry180\an5\bord0\shad0\1a&H40&\c!_G.ass_color(_G.HSV_to_RGB($si/$syln*200,0.7,1))!\move($left,$middle,$left,!$middle-80!,$dur,!line.duration!)\p1\!AutoTags(100,'frz30','frz-30')!}m 0 43 b 9 11 16 4 45 0 b 48 17 48 26 0 43
+Comment: 1,0:00:00.00,0:00:00.00,Default,song',0,0,0,template noblank notext,!retime("syl",$dur,600)!{\org(!$center+160!,$middle)\3c!_G.ass_color(_G.HSV_to_RGB($si/$syln*200,0.7,1))!\c&HFFFFFF&\fscx!$width-$width/3!\fscy!$width-$width/3!\t(0,!line.duration!,\fscx!$width*2!\fscy!$width!)\fad(0,300)\an5\bord3\blur5\shad0\pos($center,!$bottom!)\p1}m 38 0 b 89 0 89 30 38 30 b -12 30 -12 0 38 0 m 38 2 b -9 2 -9 28 38 28 b 86 28 86 2 38 2
+Comment: 1,0:00:00.00,0:00:00.00,Default,2light,0,0,0,template noblank char,!retime("syl",0,600)!{\an5\blur1\shad0\t(0,!$dur/2!,\fscy180\fscx180\3c!_G.ass_color(_G.HSV_to_RGB($si/$syln*200,0.7,1))!\bord0.5\blur4)\t(!$dur/2!,$dur,\fscx100\fscy100\3c!line.styleref.color3!\move($center,$middle,$center,!$middle-80!,$dur,!line.duration!))\!AutoTags(100,'c&HFFFFFF&','c&H000000&')!}
+Comment: 13,0:00:00.00,0:00:00.00,Viet,color,0,0,0,template char notext loop 15 fxgroup normal,!retime("line",-$lright+$center-math.random(-500,500)+(j-1)*(line.duration/maxj),-line.duration+100+(j-1)*(line.duration/maxj)+600)!{\fnArial\t(,\frx3)\bord0.5\blur4\c!flycolor!\3c!flycolor!\alpha&H50&\fscx30\fscy30\an5\org($center,!$middle-720!)\pos(!$left+(($right-$left)/maxj*(j-1))+math.random(-25,45)!,$bottom)}!char[math.random(52)]!
+Comment: 1,0:00:00.00,0:00:00.00,Eng,lead-in,0,0,0,template char,!char_counter(1)!!retime("line",-$lright+(ci[1]-1)*50,-$lright+(ci[1]-1)*50)!{\t(700,900,\fscy130)\t(900,1100,\fscy100)\blur4\1a&HFF&\bord0\fscx150\fscy150\t(0,500,\fscx100\fscy100\alpha0\bord\3c!line.styleref.color3!)\an5\pos($scenter,!$smiddle!)\t(!line.duration-500!,!line.duration!,\1a&HFF&\fscx150\fscy150)\!AutoTags(1000,'alpha&H99&','alpha0')!}
+Comment: 1,0:00:00.00,0:00:00.00,Viet,lead-in,0,0,0,template char,!char_counter(1)!!retime("line",-$lright+(ci[1]-1)*50,-$lright+(ci[1]-1)*50)!{\fad(0,100)\blur4\c!line.styleref.color3!\3c!line.styleref.color1!\1a&H50&\bord0\t(0,!line.duration-line.duration/2!,\alpha0\bord!line.styleref.outline!\c!line.styleref.color1!\3c!line.styleref.color3!)\fry!math.random(-360,360)!\t(0,400,\fry0)\an5\moves3(!$center+100!,!$middle!,!$center!,!$middle-85*((-1)^ci[1])!,$scenter,!$smiddle!,0,!line.duration-line.duration/1.5!)\t(!line.duration-500!,!line.duration!,\fry720\3c&HFFFFFF&\c&HFFFFFF&)\!AutoTags(800,'alpha&H99&','alpha0')!}
+Dialogue: 0,0:00:11.86,0:00:16.52,Default,,0,0,0,,{\k20}Mi{\k34}to{\k32}me{\k16}te {\k16}i{\k84}ta {\k32}o{\k32}ku{\k56}byou {\k32}na {\k32}ka{\k80}ko
+Dialogue: 0,0:00:11.86,0:00:16.52,Eng,,0,0,0,,I admit that I had a cowardly past
+Dialogue: 0,0:00:11.86,0:00:16.52,Viet,,0,0,0,,Em thừa nhận mình có một quá khứ nhút nhát

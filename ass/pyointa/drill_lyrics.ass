@@ -1,0 +1,32 @@
+﻿[Script Info]
+Title: Default Aegisub file
+ScriptType: v4.00+
+WrapStyle: 0
+PlayResX: 640
+PlayResY: 480
+ScaledBorderAndShadow: yes
+Last Style Storage: Default
+Video File: ?dummy:30.000000:8600:640:480:0:0:0:c
+Video Aspect Ratio: 0
+Video Zoom: 8
+Video Position: 689
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Default,Arial,20,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,2,2,2,10,10,10,1
+Style: Japanese,Arial,20,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,2,2,2,10,10,10,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:02.73,0:00:05.63,Japanese,,0000,0000,0000,,{\k89}Love{\k57} {\k26}Oh {\k21}ba{\k12}by {\k26}my {\k59}girl
+Dialogue: 0,0:00:06.26,0:00:08.58,Japanese,,0000,0000,0000,,{\k24}上{\k16}手{\k14}く{\k16}は{\k21}言{\k13}え{\k26}ない{\k17}け{\k10}れ{\k12}ど{\k21}届{\k7}け{\k35}たい
+Dialogue: 0,0:00:08.83,0:00:11.75,Japanese,,0000,0000,0000,,{\k37}真{\k20}剣{\k12}な{\k30}想{\k14}い{\k17} {\k29}切{\k17}な{\k16}る{\k16}こ{\k11}の{\k44}誓{\k29}い
+Dialogue: 0,0:00:11.93,0:00:15.19,Japanese,,0000,0000,0000,,{\k25}で{\k17}も{\k19}勘{\k14}が{\k13}良{\k10}く{\k32}て{\k35} とっ{\k18}く{\k9}に{\k17}バ{\k8}レ{\k11}て{\k18}た{\k9}り{\k10}す{\k15}る{\k13}か{\k33}な？
+Dialogue: 0,0:00:15.43,0:00:17.77,Japanese,,0000,0000,0000,,{\k40}そう　{\k12}す{\k21}ぐ{\k12}に{\k32}君{\k14}に{\k18}届{\k10}け{\k75}たい
+Dialogue: 0,0:00:18.23,0:00:20.66,Japanese,,0000,0000,0000,,{\k41}何{\k36}回{\k11}も{\k22}言{\k14}え{\k17}な{\k24}い{\k32}事{\k46}さ
+Dialogue: 0,0:00:21.30,0:00:22.66,Japanese,,0000,0000,0000,,{\k34}大{\k15}事{\k15}な{\k34}言{\k38}葉
+Dialogue: 0,0:00:22.94,0:00:26.53,Japanese,,0000,0000,0000,,{\k49}聞い{\k41}て{\k16}欲{\k10}し{\k19}い{\k33}事{\k24}が{\k11}あ{\k30}るん{\k126}だ
+Dialogue: 0,0:00:27.95,0:00:31.30,Japanese,,0000,0000,0000,,{\k46}そう{\k55}さ {\k12}真{\k13}面{\k16}目{\k21}な{\k75}話{\k97}さ
+Dialogue: 0,0:00:31.30,0:00:33.30,Japanese,,0000,0000,0000,,{\k20}Would {\k35}you {\k34}mar{\k33}ry {\k78}me?
+Dialogue: 0,0:00:33.24,0:00:38.15,Japanese,,0000,0000,0000,,{\k45}驚{\k14}い{\k64}た{\k65}君{\k86}が{\k67}{\k16}と{\k15}て{\k13}も{\k20}キ{\k10}レ{\k11}イ{\k65}さ
+Dialogue: 0,0:00:38.15,0:00:42.03,Japanese,,0000,0000,0000,,{\k37}偶{\k45}然{\k19}の{\k18}出{\k16}会{\k31}い{\k33}が{\k189}今

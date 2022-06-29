@@ -1,0 +1,101 @@
+--el nombre del script (no confundir con nombre del archivo)
+name = "Lua FXs"
+-- Puedes poner una descripcion del script o el nombre de la cancion
+description = "Script basico de lua"
+-- las siguientes 2 lineas no se tienen que modificar
+configuration = {}
+version, kind = 3, 'basic_ass'
+
+
+--DE AQUI en adelante no se tienen que modificar los datos (excepto los valores de X,Y)
+
+--;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+--;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+--;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+-->--INCLUDE VARIABLES GLOBALES
+include("karaskel-adv.lua")
+br=0
+time=1
+--<--FIN INCLUDE
+
+-->>FUNCIONES DE RESULTADOS Y WEAS >>--
+function do_syllable(meta, styles, config, line, syl)
+local result = {n=0}
+function result.add() local l = copy_line(line); table.insert(result, l); return l end
+--<<FIN FUNCIONES<<--
+
+-->--REVISA TIEMPOS MUERTOS
+  if syl.text == "" then
+   return { n=0 }
+  end
+  if syl.text == " " then
+   return { n=0 }
+  end
+--<--FIN REVISION
+
+-->--REVISA EL TIEMPO EN LAS LINEAS
+if time ~= line.start_time then
+  time=line.start_time
+  br=-1
+end
+br=br+1
+--<--FIN REVISION
+
+-->-- POSICION DE X - Y (Pueden modificarse los valores)
+  local x=syl.center + line.centerleft
+  local y=line.styleref.margin_v + 20  
+--<-- FIN POSICION
+
+--REVISA LAS LINEAS POR SI HAY ERRORES DE SINTAXIS
+if  (syl.text_stripped == ".") then elseif (syl.text_stripped == ",") then elseif (syl.text_stripped == "\"") then else
+end
+
+--HASTA ACA no se tienen que modificar los datos
+--;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+--;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+--;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+--EFECTO DE INICIO
+--el efecto con el que apareceran las silabas en pantalla
+l=result.add()
+l.text = string.format("{\\an5\\pos(%d,%d)\\bord0\\fscx50\\fscy50\\frx100\\1c&HFFFFFF&\\t(\\frx360\\1c&HCDE0E4&\\fscx100\\fscy100\\bord2)}%s",x,y,syl.text_stripped)
+l.start_time = line.start_time -28 +br*1
+l.end_time = line.start_time + br*10 -15
+
+--SILABAS ESTATICAS
+--las silabas aparecen estaticas hasta el inicio del efecto
+--tambien se pueden poner un efecto antes del karaoke
+l=result.add()
+l.layer=2
+l.text = string.format("{\\an5\\pos(%d,%d)}%s",x,y,syl.text_stripped)
+l.start_time = line.start_time +br*10 -15
+l.end_time = line.start_time + syl.start_time/10
+
+--Efectos del karaoke
+--Puede tener los que quieras
+--EFECTO 01
+l=result.add()
+l.layer=30
+l.text = string.format("{\\an5\\move(%d,%d,%d,%d)\\t(0,30,\\bord3\\1c&H3E75F1&\\3c&HFFFFFF&\\fscy100)\\t(30,%d,\\fscy250\\bord0\\1a&Hff&\\alpha&HFF&)}%s",x,y,x,y+20,syl.duration*10+200,syl.text_stripped)
+l.start_time = line.start_time + syl.start_time/10
+l.end_time = line.start_time + syl.start_time/10 + syl.duration + 20
+
+--EFECTO 02
+l=result.add()
+l.layer=40
+l.text = string.format("{\\an5\\fad(100,0)\\move(%d,%d,%d,%d)\\bord0\\t(0,30,\\3a&HFF&\\4a&HFF&\\1c&H3E75F1&\\frx100\\fscy250)\\t(30,%d,\\1c&HFFFFFF&\\frx360\\1a&Hff&\\fscy100\\alpha&HFF&)}%s",x,y+15,x,y,syl.duration*10+200,syl.text_stripped)
+l.start_time = line.start_time + syl.start_time/10 + syl.duration -10
+l.end_time = line.start_time + syl.start_time/10 + syl.duration + 30
+
+--EFECTO 03
+for i=0,10 do
+   l = result.add()
+   l.layer=3 + i*2
+   l.text = string.format("{\\an5\\pos(%d,%d)\\bord0\\3a&HFF&\\4a&HFF&\\1c&HFFFFFF&\\frx100\\t(\\alpha&HFF&\\frx-360)}%s", x, y+math.random(-1,10), syl.text_stripped)
+   l.start_time = line.start_time + syl.start_time/10
+   l.end_time = line.start_time + syl.start_time/10 + syl.duration + i*4
+end 
+
+  return result
+end

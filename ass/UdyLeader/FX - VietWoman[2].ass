@@ -1,0 +1,25 @@
+﻿[Script Info]
+Title: Default Aegisub file
+ScriptType: v4.00+
+WrapStyle: 0
+PlayResX: 640
+PlayResY: 480
+ScaledBorderAndShadow: yes
+Video Aspect Ratio: 0
+Video Zoom: 6
+Video Position: 0
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Default,Arial,20,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,2,2,2,10,10,10,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Comment: 0,0:00:00.00,0:00:00.00,Default,,0000,0000,0000,code syl all,function char_counter2(ref) ci2[ref] = ci2[ref] + 1; return "" end
+Comment: 0,0:00:00.00,0:00:00.00,Default,,0000,0000,0000,code line all,ci2 = { 0 }; cn = _G.unicode.len(orgline.text_stripped:gsub(" ",""))
+Comment: 1,0:00:00.00,0:00:00.00,Default,,0000,0000,0000,template char,{\an5}!char_counter2(1)!!retime("start2syl",-1200+(ci2[1]-1)*35,0)!{\frz100\be1\fscx0\fscy0\an5\1a&HFF&\3a&HFFF&\move(!$center+math.random(40,40)!,!$middle+math.random(-70,-70)!,$scenter,$smiddle,0,500)\t(0,500,\fscx100\fscy100\frz0\alpha&H00)}
+Comment: 0,0:00:00.00,0:00:00.00,Default,lead-in (text),0000,0000,0000,template char noblank,{\an5}!char_counter2(1)!!retime("start2syl",-900+(ci2[1]-1)*35,0)!{\t(0,$dur)\frz100\be1\fscx0\fscy0\bord3\blur5\an5\1a&HFF&\3a&HFF&\move(!$center+math.random(-40,-40)!,!$middle+math.random(70,70)!,$scenter,$smiddle,0,500)\t(0,500,\fscx100\fscy100\frz0\alpha&H00)}
+Comment: 5,0:00:00.00,0:00:00.00,Default,hilight (char),0000,0000,0000,template noblank,!retime("syl",0,700)!{\an5\move($center,$middle,!$center+math.random(-90,-90)!,!$middle+math.random(-70,70)!)\fad(0,!$dur+360!)\blur9\bord1\t(0,50,\fscx150\fscy150)\t(50,!$dur+360!,\alpha&HFF&\fscx100\fscy100)}
+Comment: 0,0:00:00.00,0:00:00.00,Default,,0000,0000,0000,code once,colorheart = {"&H3A0BD2&", "&H3A0BD2&"}
+Comment: 0,0:00:56.88,0:00:57.34,Default,,0000,0000,0000,template noblank notext,!retime("syl",-300,1000)!{\frx360\an5\frz0\fscx0\fscy0\shad0\bord2\3c&H17FFEC&\blur4\fad(50,300)\c!colorheart[math.random(1)]!\pos(!$scenter+math.random(-35,35)!,!$smiddle+math.random(-35,35)!)\t(0,3000,\frz0)\t(0,300,\fscx120\fscy120)}{\p1}m 18 40 b 23 29 35 27 35 16 b 36 8 23 0 18 11 b 14 0 0 8 1 16 b 1 27 14 29 18 40 m 16 12 b 16 13 15 13 15 12 b 15 11 12 8 10 9 b 9 9 9 8 10 8 b 12 7 16 10 16 12 m 33 15 b 33 16 32 16 32 15 b 31 11 27 9 24 9 b 23 9 23 8 24 8 b 28 7 33 11 33 15
+Dialogue: 0,0:00:00.00,0:00:05.00,Default,,0000,0000,0000,,

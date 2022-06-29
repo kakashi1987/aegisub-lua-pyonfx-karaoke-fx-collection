@@ -1,0 +1,28 @@
+﻿[Script Info]
+Title: Default Aegisub file
+ScriptType: v4.00+
+WrapStyle: 0
+PlayResX: 640
+PlayResY: 480
+ScaledBorderAndShadow: yes
+Video Aspect Ratio: 0
+Video Zoom: 6
+Video Position: 0
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Default,Arial,20,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,2,2,2,10,10,10,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Comment: 0,0:00:00.00,0:00:05.00,Default,,0000,0000,0000,template char noblank,!retime("start2syl",-(400-$sright),0)!{\an5\pos($scenter,$smiddle)\fscx0\fscy0\t(0,!$dur/2!,\fscx120\fscy120)\t(!$dur/2!,$dur,\fscx100\fscy100)}
+Comment: 0,0:00:05.00,0:00:07.00,Default,,0000,0000,0000,template syl noblank,!maxloop(math.random(3,5))!!retime("syl",math.random(-100,100),math.random(-600,-100))!{\an5\pos(!$scenter-math.random(-25,25)!,!$smiddle-math.random(-25,25)!)\3c&HFFFFFF&\c&HFFFFFF&\fscx0\fscy0\t(0,!math.random(400,600)!,\fad(200,200)\fsc!math.random(100,120)!)\p1\blur5\bord5)}m 0 14 b 1 0 20 0 21 14 b 21 27 0 27 0 14
+Comment: 0,0:00:07.00,0:00:09.00,Default,,0000,0000,0000,template syl noblank multi,!retime("syl",$dur/6,400)!{\an5\pos($scenter,$smiddle)\clip($sleft,!$stop!,$sright,!$sbottom-$sheight*4/5!)\fad(200,200)}
+Comment: 0,0:00:07.00,0:00:09.00,Default,,0000,0000,0000,template syl noblank multi,!retime("syl",$dur/5,400)!{\an5\pos($scenter,$smiddle)\clip($sleft,!$stop!,$sright,!$sbottom-$sheight*3/5!)\fad(200,200)}
+Comment: 0,0:00:08.98,0:00:09.02,Default,,0000,0000,0000,template syl noblank multi,!retime("syl",$dur/5,400)!{\an5\pos($scenter,$smiddle)\clip($sleft,!$stop!,$sright,!$sbottom-$sheight*3/5!)\fad(200,200)}
+Comment: 0,0:00:07.00,0:00:09.00,Default,,0000,0000,0000,template syl noblank multi,!retime("syl",$dur/4,400)!{\an5\pos($scenter,$smiddle)\clip($sleft,!$stop!,$sright,!$sbottom-$sheight*2/5!)\fad(200,200)}
+Comment: 0,0:00:07.00,0:00:09.00,Default,,0000,0000,0000,template syl noblank multi,!retime("syl",$dur/2,400)!{\an5\pos($scenter,$smiddle)\clip($sleft,!$stop+$sheight*4/5!,$sright,!$sbottom!)\fad(200,200)}
+Comment: 0,0:00:07.00,0:00:09.00,Default,,0000,0000,0000,template syl noblank multi,!retime("syl",$dur/3,400)!{\an5\pos($scenter,$smiddle)\clip($sleft,!$stop!,$sright,!$sbottom-$sheight*1/5!)\fad(200,200)}
+Comment: 0,0:00:09.00,0:00:11.00,Default,,0000,0000,0000,template syl noblank multi,!retime("syl",0,$dur*3/4-$dur)!{\an5\pos($scenter,$smiddle)\1a&HFF&\3c&H4E00C3&\blur3\bord2\t(0,400,\fscx200\fscy200\fad(0,200))}
+Comment: 0,0:00:09.00,0:00:11.00,Default,,0000,0000,0000,template syl noblank,!retime("syl",0,400)!{\an5\pos($scenter,$smiddle)\1a&HFF&\3c&H4E00C3&\blur5\bord1\fad(200,200)}
+Dialogue: 0,0:00:00.00,0:00:05.00,Default,,0000,0000,0000,,

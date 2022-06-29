@@ -1,0 +1,69 @@
+
+
+name = "SCAReND" 
+description = "SCAReND: I hope You Like it ^_^" 
+version, kind, configuration = 3, 'basic_ass', {} 
+
+
+include("karaskel-adv.lua") 
+
+function do_syllable(meta, styles, config, line, syl) 
+
+
+	local result = {n=0} 
+
+
+            function result.add() local l = copy_line(line); table.insert(result, l); return l end
+
+
+	local x = line.centerleft + syl.center                   
+	local y = 45                                                           
+	local start_t = syl.start_time                                    
+	local mid_t =  syl.start_time + syl.duration*5   
+	local end_t = syl.end_time 
+	       
+
+        local l = result.add()
+	l.layer = 0 
+
+               
+        l.end_time = line.start_time + syl.start_time/10
+	l.text = string.format("{\\an5\\pos(%d,%d)\\1c&H166076&\\3c&HB8B8CD&}%s",x,y,syl.text_stripped)
+
+
+        local l = result.add()
+        l.layer = 1
+
+	l.start_time = line.start_time + syl.start_time/10 
+	l.text = string.format("{\\an5\\pos(%d,%d)\\t\\1c&HB8B8CD&\\3c&HFFFFFF&}%s",x,y,syl.text_stripped)
+
+
+
+	local l = result.add()
+	l.layer = 2
+
+	l.start_time = line.start_time + syl.start_time/10+ syl.duration
+	l.text = string.format("{\\an5\\move(%d,%d,%d,%d)\\fad(500,500)\\t\\fry360)\\1c&H000000&\\3c&HFFFFFF&}%s",x,y,x,135+50,syl.text_stripped)
+
+
+        local l = result.add()
+        l.layer = 3
+
+	l.start_time = line.start_time + syl.start_time/10
+        l.end_time = line.start_time + syl.start_time/10+ syl.duration
+
+	l.text = string.format("{\\an5\\pos(%d,%d)\\fad(0,300)\\t\\1c&HB8B8CD&\\3c&H000000&}%s",x,y,syl.text_stripped)
+
+
+        local l = result.add()
+        l.layer = 4
+
+	l.start_time = line.start_time + syl.start_time/10
+        l.end_time = line.start_time + syl.start_time/10+ syl.duration
+
+	l.text = string.format("{\\an5\\move(%d,%d,%d,%d)\\fad(0,300)\\t\\1c&HB8B8CD&\\3c&H000000&}%s",x,y,x+20,y-40,syl.text_stripped)
+
+
+        return result
+
+end 
